@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot?d7kblg');
+    src: url('../fonts/icomoon.eot?d7kblg#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?d7kblg') format('truetype'),
+    url('../fonts/icomoon.woff?d7kblg') format('woff'),
+    url('../fonts/icomoon.svg?d7kblg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+    content: "\e900";
+    color: #e3e4e6;
+}
+
+.icon-back:before {
+    content: "\e901";
+}
+
+.icon-app:before {
+    content: "\e902";
+}
+
+.icon-menu:before {
+    content: "\e903";
+}
+
+.icon-earth:before {
+    content: "\e904";
+}
+
+.icon-comm:before {
+    content: "\e905";
+}
+
+.icon-phone:before {
+    content: "\e906";
+}
+
+.icon-hand:before {
+    content: "\e907";
+}
+
+.icon-rent:before {
+    content: "\e908";
+}
+
+.icon-person:before {
+    content: "\e909";
+}
+
+.icon-trend:before {
+    content: "\e90a";
+}
+
+.icon-plus:before {
+    content: "\e90b";
+}
+
+.icon-link:before {
+    content: "\e90c";
+}
+
+.icon-micro:before {
+    content: "\e90d";
+}
+
+.icon-favorite:before {
+    content: "\e90e";
+}
+
+.icon-home:before {
+    content: "\e90f";
+}
+
+.icon-search:before {
+    content: "\e910";
+}
+
+.icon-new:before {
+    content: "\e911";
+}
+
+.icon-msg:before {
+    content: "\e912";
+}
+
+.icon-info:before {
+    content: "\e913";
+}
+
+.icon-rental:before {
+    content: "\e914";
+}
+
+.icon-android:before {
+    content: "\e915";
+}
+
+.icon-position:before {
+    content: "\e916";
+}
+
+.icon-message:before {
+    content: "\e917";
+}
+
+.icon-pempty:before {
+    content: "\e918";
+}

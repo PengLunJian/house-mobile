@@ -1,0 +1,61 @@
+.is_clickable {
+    /*cursor:hand;*/
+    /*cursor:pointer*/
+}
+
+.nstSlider {
+    cursor: hand;
+    cursor: pointer;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+    height: 0.04rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.1rem;
+    width: 100% !important;
+}
+
+.nstSlider .leftGrip.gripHighlighted,
+.nstSlider .rightGrip.gripHighlighted {
+    background-color: #ffffff
+}
+
+.nstSlider .rightGrip, .nstSlider .leftGrip {
+    width: 0.24rem;
+    height: 0.24rem;
+    position: absolute;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    margin-top: -0.1rem;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 0.071429rem 0.142857rem #ccc;
+    -moz-box-shadow: 0 .071429rem .142857rem #ccc;
+    box-shadow: 0 0.071429rem 0.142857rem #ccc;
+}
+
+.nstSlider .bar {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #ff8447;
+    height: 100%;
+    top: 0px
+}
+
+.nstSlider .highlightPanel {
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #cccccc;
+    height: 100%;
+    top: 0
+}

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>谷粒好房</title>
+    <link href="plugins/swiper/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+    <link href="plugins/jquery-nstslider/jquery.nstSlider.css" rel="stylesheet" type="text/css">
+    <link href="css/font.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="js/jQuery v1.11.1.js"></script>
+    <script type="text/javascript" src="js/UI.js"></script>
+    <script src="plugins/swiper/swiper-3.3.1.min.js" type="text/javascript"></script>
+    <script src="plugins/jquery-nstslider/jquery.nstSlider.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="list_page">
+    <!------ 搜索筛选区 ------>
+    <div class="header">
+        <div class="header_search">
+            <a href="javascript:void(0);" class="back_btn icon-back"></a>
+            <a href="javascript:void(0)" class="search_btn"><i class="icon-search"></i>请输入小区名或地址</a>
+            <a href="javascript:void(0);" class="nav_btn icon-menu"></a>
+        </div>
+        <div class="header_filter">
+            <ul class="tab clearfix">
+                <li class="tab_btn">地区</li>
+                <li class="tab_btn">筛选</li>
+                <li class="tab_btn">排序</li>
+            </ul>
+        </div>
+    </div>
+    <!------ 房屋列表区 ------>
+    <div class="items_box">
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item_list">
+            <a href="javascript:void(0);">
+                <div class="item_ins clearfix">
+                    <div class="item_img pull-left">
+                        <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
+                    </div>
+                    <div class="item_info pull-right">
+                        <div class="item_lv1 clearfix">
+                            <i class="item_icon pull-left"><span>售</span></i>
+                            <h2 class="item_title pull-left ellipsis">南北通精致装修三房，无增值税，看房方便，商场地铁近</h2>
+                        </div>
+                        <div class="item_lv2 clearfix">
+                            <address class="item_addr pull-left">闵行 - 莘庄</address>
+                            <em class="item_price pull-right"><span>610</span>万</em>
+                        </div>
+                        <div class="item_lv3 clearfix">
+                            <span class="item_layout pull-left">3室2厅2卫&nbsp;&nbsp;124m²</span>
+                            <span class="item_uprice pull-right">49194元/m²</span>
+                        </div>
+                        <div class="item_lv4 clearfix">
+                            <span class="item_lv4_label">满分</span>
+                            <span class="item_lv4_label">学区房</span>
+                            <span class="item_lv4_label">拎包入住</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!------ 右消息按钮 ------>
+    <div class="side_fixed">
+        <ul class="side_fixed_nav">
+            <li class="side_fixed_btn icon-message"></li>
+        </ul>
+    </div>
+    <!------ 加载更多区 ------>
+    <div class="load_more">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+    <!------ 侧边菜单区 ------>
+    <div class="modal modal_nav hide">
+        <div class="modal_bg"></div>
+        <div class="modal_content">
+            <div class="modal_header"></div>
+            <div class="modal_body">
+                <ul class="side_nav_box">
+                    <li class="side_nav_ls">
+                        <a href="javascript:void(0);"><span><i class="icon-home"></i><label>首页</label></span></a>
+                    </li>
+                    <li class="side_nav_ls">
+                        <a href="javascript:void(0);"><span><i class="icon-new"></i><label>新房</label></span></a>
+                    </li>
+                    <li class="side_nav_ls">
+                        <a href="javascript:void(0);"><span><i class="icon-hand"></i><label>二手房</label></span></a>
+                    </li>
+                    <li class="side_nav_ls">
+                        <a href="javascript:void(0);"><span><i class="icon-rental"></i><label>租房</label></span></a>
+                    </li>
+                    <li class="side_nav_ls">
+                        <a href="javascript:void(0);"><span><i class="icon-earth"></i><label>海外房产</label></span></a>
+                    </li>
+                    <li class="side_nav_ls">
+                        <a href="javascript:void(0);"><span><i class="icon-info"></i><label>资讯</label></span></a>
+                    </li>
+                    <li class="side_nav_ls">
+                        <a href="javascript:void(0);"><span><i class="icon-rent"></i><label>金融</label></span></a>
+                    </li>
+                    <li class="side_nav_ls">
+                        <a href="javascript:void(0);"><span><i class="icon-person"></i><label>个人中心</label></span></a>
+                    </li>
+                    <li class="side_nav_ls">
+                        <a href="javascript:void(0);"><span><i class="icon-app"></i><label>下载APP</label></span></a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="modal_footer"></div>
+        </div>
+
+    </div>
+    <!------ 地区弹窗层 ------>
+    <div class="modal modal_addr hide">
+        <div class="modal_bg"></div>
+        <div class="modal_content">
+            <div class="modal_header"></div>
+            <div class="modal_body clearfix">
+                <a href="javascript:void(0);" class="active">不限</a>
+                <a href="javascript:void(0);">不限</a>
+                <a href="javascript:void(0);">不限</a>
+                <a href="javascript:void(0);">不限</a>
+                <a href="javascript:void(0);">不限</a>
+                <a href="javascript:void(0);">不限</a>
+                <a href="javascript:void(0);">不限</a>
+                <a href="javascript:void(0);">不限</a>
+                <a href="javascript:void(0);">不限</a>
+                <a href="javascript:void(0);">不限</a>
+                <a href="javascript:void(0);">不限</a>
+            </div>
+            <div class="modal_footer clearfix">
+                <a href="javascript:void(0);" class="pull-left btn clear">清空</a>
+                <a href="javascript:void(0);" class="pull-left btn confirm">确定</a>
+            </div>
+        </div>
+    </div>
+    <!------ 筛选弹窗层 ------>
+    <div class="modal modal_filter hide">
+        <div class="modal_bg"></div>
+        <div class="modal_content">
+            <div class="modal_header"></div>
+            <div class="modal_body">
+                <!------ 滑动插件模块 ------>
+                <div class="modal_filter_group">
+                    <div class="clearfix" style="line-height:0.21rem;">
+                        <div class="leftLabel" style="float:left;">总价</div>
+                        <div class="rightLabel" style="float:right;">不限</div>
+                    </div>
+                    <div class="nstSlider" data-range_min="0" data-range_max="500" data-cur_min="0"
+                         data-cur_max="500">
+                        <div class="highlightPanel"></div>
+                        <div class="bar"></div>
+                        <div class="leftGrip"></div>
+                        <div class="rightGrip"></div>
+                    </div>
+                </div>
+                <div class="modal_filter_group">
+                    <h3 class="modal_filter_title">户型 ( 室 )</h3>
+                    <ul class="modal_filter_sel clearfix">
+                        <li><a href="javascript:void(0);" class="active">一室</a></li>
+                        <li><a href="javascript:void(0);">两室</a></li>
+                        <li><a href="javascript:void(0);">三室</a></li>
+                        <li><a href="javascript:void(0);">四室</a></li>
+                        <li><a href="javascript:void(0);">五室</a></li>
+                        <li><a href="javascript:void(0);">五室以上</a></li>
+                    </ul>
+                </div>
+                <div class="modal_filter_group">
+                    <h3 class="modal_filter_title">户型 ( 卫 )</h3>
+                    <ul class="modal_filter_sel clearfix">
+                        <li><a href="javascript:void(0);" class="active">一卫</a></li>
+                        <li><a href="javascript:void(0);">两卫</a></li>
+                        <li><a href="javascript:void(0);">三卫</a></li>
+                        <li><a href="javascript:void(0);">三卫以上</a></li>
+                    </ul>
+                </div>
+                <!------ 滑动插件模块 ------>
+                <div class="modal_filter_group">
+                    <div class="clearfix" style="line-height:0.21rem;">
+                        <div class="leftLabel" style="float:left;">面积</div>
+                        <div class="rightLabel" style="float:right;">不限</div>
+                    </div>
+                    <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0"
+                         data-cur_max="1000">
+                        <div class="highlightPanel"></div>
+                        <div class="bar"></div>
+                        <div class="leftGrip"></div>
+                        <div class="rightGrip"></div>
+                    </div>
+                </div>
+                <div class="modal_filter_group">
+                    <h3 class="modal_filter_title">特色</h3>
+                    <ul class="modal_filter_sel clearfix">
+                        <li><a href="javascript:void(0);" class="active">上门实勘</a></li>
+                        <li><a href="javascript:void(0);">满五</a></li>
+                        <li><a href="javascript:void(0);">满二</a></li>
+                        <li><a href="javascript:void(0);">唯一</a></li>
+                        <li><a href="javascript:void(0);">学区房</a></li>
+                        <li><a href="javascript:void(0);">地铁房</a></li>
+                    </ul>
+                </div>
+                <div class="modal_filter_group">
+                    <h3 class="modal_filter_title">房龄</h3>
+                    <ul class="modal_filter_sel clearfix">
+                        <li><a href="javascript:void(0);" class="active">5年内</a></li>
+                        <li><a href="javascript:void(0);">5-10年</a></li>
+                        <li><a href="javascript:void(0);">11-20年</a></li>
+                        <li><a href="javascript:void(0);">20年以上</a></li>
+                    </ul>
+                </div>
+                <div class="modal_filter_group">
+                    <h3 class="modal_filter_title">特色</h3>
+                    <ul class="modal_filter_sel clearfix">
+                        <li><a href="javascript:void(0);" class="active">南北通透</a></li>
+                        <li><a href="javascript:void(0);">东西向</a></li>
+                        <li><a href="javascript:void(0);">朝南</a></li>
+                        <li><a href="javascript:void(0);">朝北</a></li>
+                        <li><a href="javascript:void(0);">朝东</a></li>
+                        <li><a href="javascript:void(0);">朝西朝西</a></li>
+                    </ul>
+                </div>
+                <div class="modal_filter_group">
+                    <h3 class="modal_filter_title">楼层</h3>
+                    <ul class="modal_filter_sel clearfix">
+                        <li><a href="javascript:void(0);" class="active">1-6层</a></li>
+                        <li><a href="javascript:void(0);">7-15层</a></li>
+                        <li><a href="javascript:void(0);">16层以上</a></li>
+                    </ul>
+                </div>
+                <div class="modal_filter_group">
+                    <h3 class="modal_filter_title">类型</h3>
+                    <ul class="modal_filter_sel clearfix">
+                        <li><a href="javascript:void(0);" class="active">普通住宅</a></li>
+                        <li><a href="javascript:void(0);">公寓</a></li>
+                        <li><a href="javascript:void(0);">别墅</a></li>
+                        <li><a href="javascript:void(0);">新里洋房</a></li>
+                        <li><a href="javascript:void(0);">老公房</a></li>
+                        <li><a href="javascript:void(0);">公寓</a></li>
+                        <li><a href="javascript:void(0);">其他</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal_footer clearfix">
+                <a href="javascript:void(0);" class="pull-left btn clear">清空</a>
+                <a href="javascript:void(0);" class="pull-left btn confirm">确定</a>
+            </div>
+        </div>
+    </div>
+    <!------ 排序弹窗层 ------>
+    <div class="modal modal_sort hide">
+        <div class="modal_bg"></div>
+        <div class="modal_content">
+            <div class="modal_header"></div>
+            <div class="modal_body">
+                <a href="javascript:void(0);">综合排序</a>
+                <a href="javascript:void(0);">总价最低</a>
+                <a href="javascript:void(0);">总价最高</a>
+                <a href="javascript:void(0);">面积最下</a>
+                <a href="javascript:void(0);">面积最大</a>
+                <a href="javascript:void(0);">综合排序</a>
+                <a href="javascript:void(0);">总价最低</a>
+                <a href="javascript:void(0);">总价最高</a>
+                <a href="javascript:void(0);">总价最高</a>
+                <a href="javascript:void(0);">总价最高</a>
+            </div>
+            <div class="modal_footer"></div>
+        </div>
+    </div>
+    <!------ 搜索框弹窗 ------>
+    <div class="modal modal_search hide">
+        <!--<div class="modal_bg"></div>-->
+        <div class="modal_content">
+            <div class="modal_header"></div>
+            <div class="modal_body">
+                <div class="search_group">
+                    <label class="search_label icon-search" for="search_input"></label>
+                    <input id="search_input" class="search_input" placeholder="请输入小区名或地址"/>
+                    <a href="javascript:void(0);" class="btn cancel">取消</a>
+                </div>
+                <div class="search_result">
+                    <ul class="result_block">
+                        <li class="result_item clearfix">
+                            <label class="pull-left result_title">怡苑洋房</label>
+                            <em class="pull-right result_nums">约 10 套在售</em>
+                        </li>
+                        <li class="result_item clearfix">
+                            <label class="pull-left result_title">怡苑洋房</label>
+                            <em class="pull-right result_nums">约 10 套在售</em>
+                        </li>
+                        <li class="result_item clearfix">
+                            <label class="pull-left result_title">怡苑洋房</label>
+                            <em class="pull-right result_nums">约 10 套在售</em>
+                        </li>
+                        <li class="result_item clearfix">
+                            <label class="pull-left result_title">怡苑洋房</label>
+                            <em class="pull-right result_nums">约 10 套在售</em>
+                        </li>
+                        <li class="result_item clearfix">
+                            <label class="pull-left result_title">怡苑洋房</label>
+                            <em class="pull-right result_nums">约 10 套在售</em>
+                        </li>
+                        <li class="result_item clearfix">
+                            <label class="pull-left result_title">怡苑洋房</label>
+                            <em class="pull-right result_nums">约 10 套在售</em>
+                        </li>
+                        <li class="result_item clearfix">
+                            <label class="pull-left result_title">怡苑洋房</label>
+                            <em class="pull-right result_nums">约 10 套在售</em>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal_footer"></div>
+        </div>
+    </div>
+</div>
+<script src="plugins/lazyload/lazyload.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        (function listPageJS() {
+            $(".nav_btn").on("click", function () {
+                $(".modal_nav").removeClass("hide");
+                $(".modal_nav .modal_bg").addClass("hide");
+            });
+
+            $(".modal_bg").on("click", function () {
+                $(this).parents(".modal").addClass("hide");
+            });
+
+            $(".tab_btn").on("click", function () {
+                $(".tab_btn").removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $(".modal").addClass("hide");
+                var selectStr = ".modal:eq(" + (index + 1) + ")";
+                $(selectStr).removeClass("hide");
+            });
+
+            $(".modal a").on("click", function () {
+                if ($(this).hasClass("btn")) {
+                    if ($(this).hasClass("clear")) {
+                        //如果用户点击的是清空按钮
+                        var $_modal = $(this).parents(".modal");
+                        $_modal.find(".modal_body a").removeClass("active");
+                        if ($_modal.find(".nstSlider")[0]) {
+                            var left = $(".nstSlider").width() - $(".leftGrip").width();
+                            $(".leftGrip").css("left", "0px");
+                            $(".rightGrip").css("left", left + "px");
+                            $(".bar").css({"width": "100%", "left": "0px"});
+                        }
+                    } else if ($(this).hasClass("confirm")) {
+                        //如果用户点击的是提交按钮
+
+                    }
+                } else {
+                    var $_parent = $(this).parents(".modal");
+                    if ($_parent.hasClass("modal_addr")) {
+                        //如果选择的是地区弹窗
+                        $(".modal_addr .modal_body a").removeClass("active");
+                        $(this).addClass("active");
+
+                    } else if ($_parent.hasClass("modal_filter")) {
+                        //如果选择的是筛选弹窗
+                        var $_parent = $(this).parents(".modal_filter_group");
+                        $_parent.find("a").not(this).removeClass("active");
+                        if ($(this).hasClass("active")) {
+                            $(this).removeClass("active");
+                        } else {
+                            $(this).addClass("active");
+                        }
+                    } else if ($_parent.hasClass("modal_sort")) {
+                        //如果选择的是排序弹窗
+                        $(".modal_sort .modal_body a").removeClass("active");
+                        $(this).addClass("active");
+                    }
+                }
+
+            });
+            $(".search_btn").on("click", function () {
+            	$(".modal_search").removeClass("hide");
+                $("body").addClass("hidden");
+                setTimeout(function(){
+                	$(".modal_search").addClass("show");
+                },30);
+            	$("#search_input").trigger("click").focus();
+            });
+
+            $(".btn.cancel").on("click", function () {
+                var $_parent = $(this).parents(".modal_search");
+                $("body").removeClass("hidden");
+                $_parent.removeClass("show");
+                setTimeout(function(){
+                	$_parent.addClass("hide");
+                },400);
+            });
+
+            // ajax 请求加载更多数据
+            (function (pageCode) {
+                $(this).on("scroll", function () {
+                    if (window.timer) clearInterval(window.timer);
+                    window.timer = setTimeout(function () {
+                        pageCode++;
+                        var windowHeight = $(this).height();
+                        var scrollTop = $(this).scrollTop();
+                        var documentHeight = $(document).height();
+                        if (windowHeight + scrollTop >= documentHeight) {
+                            // 发送AjAx加载更多数据
+                            $.ajax({
+                                url: "",
+                                type: "POST",
+                                dataType: "JSON",
+                                data: {pageCode: pageCode},
+                                success: function (data) {
+
+                                },
+                                error: function (message) {
+                                    console.log(pageCode);
+                                }
+                            })
+                        }
+                        // document.title = windowHeight + "+" + scrollTop + "=" + documentHeight;
+                    }, 5000);
+                });
+            })(0);
+
+        })();
+
+        (function nstSlider() {
+            $('.nstSlider').nstSlider({
+                "left_grip_selector": ".leftGrip",
+                "right_grip_selector": ".rightGrip",
+                "value_bar_selector": ".bar",
+                "highlight": {
+                    "grip_class": "gripHighlighted",
+                    "panel_selector": ".highlightPanel"
+                },
+                "value_changed_callback": function (cause, leftValue, rightValue) {
+                    $(this).prev().find('.leftLabel').text(leftValue);
+                    $(this).prev().find('.rightLabel').text(rightValue);
+                },
+            });
+            // Call methods and such...
+            var highlightMin = 0, highlightMax = 1000;
+            $('.nstSlider').nstSlider('highlight_range', highlightMin, highlightMax);
+        })();
+    })
+</script>
+</body>
+</html>
