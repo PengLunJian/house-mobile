@@ -48,7 +48,7 @@ MoveBar.prototype.setTranslate = function (value) {
 }
 
 /**
- * BEGIN 编写字数限制功能
+ * BEGIN 编写字数限制插件
  * Author:PengLunJian
  * Date:2017-05-11
  * @param obj 对象形参
@@ -90,7 +90,7 @@ LimitFontSize.prototype.hide = function () {
 }
 
 /**
- * BEGIN 倒计时功能
+ * BEGIN 倒计时插件
  * Author:PengLunJian
  * Date:2017-05-10
  * @param obj 初始化的参数对象
@@ -104,8 +104,8 @@ function TimeCountDown(obj) {
     this.finishFn = obj.fn;
 }
 
-// 倒计时对象的原型方法
-TimeCountDown.prototype.fnCountDown = function () {
+// 开始倒计时方法
+TimeCountDown.prototype.startClock = function () {
     var tempObj = this;
     var text = $(tempObj.el).text().trim().replace(/\d/g, "");
     $(tempObj.el).addClass("disabled");
@@ -121,17 +121,96 @@ TimeCountDown.prototype.fnCountDown = function () {
     }, 1000);
 }
 
+// 停止倒计时方法
+TimeCountDown.prototype.stopClock = function () {
+    if (this.timer) clearInterval(this.timer);
+}
+
+/**
+ * BEGIN 编写数字软键盘插件
+ * Author:PengLunJian
+ * Date:2017-05-23
+ * @param obj 初始化的参数对象
+ * @constructor 数字软键盘构造函数
+ */
+function Keyboard(obj) {
+    var _proto_obj = this;
+    this.element = obj.element ? obj.element : ".modal_keyboard";
+    this.btnCancel = obj.btnCancel ? obj.btnCancel : ".btn-cancel";
+    this.btnConfirm = obj.btnConfirm ? obj.btnConfirm : ".btn-confirm";
+    this.keyBtnElement = obj.keyBtnElement ? obj.keyBtnElement : ".btn-num-item";
 
 
+    // 打开数字软键盘
+    $(this.btnCancel).on("click", function () {
+        _proto_obj.hide();
+    });
 
+    // 关闭数字软键盘
+    $(this.btnConfirm).on("click", function () {
+        _proto_obj.hide();
+    });
+}
 
+/**
+ * BEGIN 打开数字软键盘
+ * Author:PengLunJian
+ * Date:2017-05-23
+ * @returns {Keyboard} 数字软键盘对象
+ */
+Keyboard.prototype.show = function () {
+    if (this) $(this.element).removeClass("hide");
+    return this;
+}
 
+/**
+ * BEGIN 关闭数字软键盘
+ * Author:PengLunJian
+ * Date:2017-05-23
+ * @returns {Keyboard} 数字软键盘对象
+ */
+Keyboard.prototype.hide = function () {
+    if (this) $(this.element).addClass("hide");
+    return this;
+}
 
+/**
+ * BEGIN 点击键盘按键输入数字
+ * Author:PengLunJian
+ * Date:2017-05-23
+ * @param selector 目标文本选择器
+ * @returns {Keyboard} 数字软键盘对象
+ */
+Keyboard.prototype.keyBtnPress = function (selector) {
+    var str = "";
+    var $_obj = $(selector);
+    var placeholder = $_obj.attr("data-placeholder").trim();
+    $(this.element).off("touchstart").on("touchstart", this.keyBtnElement, function () {
+        str = $_obj.text().trim();
+        var index = $(this).index();
+        var value = $(this).text().trim();
+        if (11 == index) {
+            if (str != placeholder) str = str.substring(0, str.length - 1);
+        } else if (9 != index) {
+            if (str == placeholder) str = "";
+            if (str.length < $_obj.attr("data-size")) str += value;
+        }
+        if ("" == str || placeholder == str) {
+            str = placeholder;
+        }
+        $_obj.text(str);
+    });
+    return this;
+}
 
-
-
-
-
+Keyboard.prototype.resetPosition = function (selector) {
+    var _mc = " .modal_content";
+    var selectName = this.element + _mc;
+    var iHeight = $(selectName).outerHeight();
+    var fontSize = parseFloat($("html").css("fontSize"));
+    var translateY = "transform:translateY(" + (-iHeight / 2 / fontSize) + "rem)";
+    $(selector + _mc).attr("style", translateY);
+}
 
 
 function setFontSize() {
