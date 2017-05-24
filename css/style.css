@@ -2092,8 +2092,8 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     width: 2.03rem;
     height: 0.3rem;
     margin: 0px auto;
-    font-size: 0.14rem;
     text-align: center;
+    font-size: 0.14rem;
     line-height: 0.2rem;
     padding: 0.05rem 0rem;
     -webkit-border-radius: 0px;
@@ -2105,7 +2105,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 .shop_page .modal .modal_body .modal_msg {
     height: 0.2rem;
     color: #FF0000;
-    font-size: 0.08rem;
+    font-size: 0.1rem;
     line-height: 0.2rem;
 }
 

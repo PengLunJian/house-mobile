@@ -28,7 +28,7 @@ $(function () {
     }
 
     function ajaxCallBackFunction() {
-        $(".modal_code .modal_info").text("验证码发送至" + window.phoneNumber.join(""));
+        $(".modal_code .modal_info").text("验证码发送至" + window.phoneNumber);
         $(".modal").addClass("hide");
         $(".modal_code").removeClass("hide");
         $(".modal_content").attr("style", "");
@@ -46,7 +46,7 @@ $(function () {
                 $(this.el).removeAttr("disabled");
             }
         });
-        window.oTime.startClock();
+        window.oTime.startTime();
     }
 
     /**
@@ -77,6 +77,7 @@ $(function () {
         })
     }
 
+
     function initializationData() {
         $(".phone").text("输入手机号");
         $(".modal_msg").text("");
@@ -92,13 +93,15 @@ $(function () {
         $(".modal_item:eq(0)").addClass("checked");
     }
 
+
     (function ($, el, modal) {
         $(el).on("click", function () {
-            // $("html").addClass("hidden");
+            $("html").addClass("hidden");
             $(".shop_body").addClass("blur");
             $(modal).removeClass("hide");
         });
     })(jQuery, ".icon-message", ".modal_login");
+
 
     (function ($, el, modal) {
         $(el).on("click", function () {
@@ -106,6 +109,7 @@ $(function () {
             $(modal).removeClass("hide");
         });
     })(jQuery, ".modal_login .confirm", ".modal_phone");
+
 
     (function ($, el, modal) {
         $(el).on("click", function () {
@@ -116,103 +120,31 @@ $(function () {
         });
     })(jQuery, ".modal .back", ".modal");
 
-    // (function ($, el) {
-    //     $(el).on("click", function () {
-    //         var phoneNumber = $(".phone").text().trim().replace(/\s/g, "");
-    //         if (phoneNotEmptyCheck(phoneNumber)) {
-    //             ajaxPhoneRequestCheck(phoneNumber, "/");
-    //         }
-    //     });
-    // })(jQuery, ".modal_phone .next", ".modal_code");
 
-
-    // (function ($, el, modal) {
-    //     $(el).on("click", function () {
-    //         $(modal).addClass("hide");
-    //         $(".modal_content").attr("style", "");
-    //     });
-    // })(jQuery, ".btn-cancel,.btn-confirm", ".modal_keyboard");
-
-    // (function ($, el, modal) {
-    //     window.index = 0;
-    //     window.code = "";
-    //     window.phoneNumber = [];
-    //     $(el).on("click", function () {
-    //         if (!$(".modal_phone").hasClass("hide")) {
-    //             if ("×" == $(this).text().trim()) {
-    //                 window.index = 0;
-    //                 window.phoneNumber = [];
-    //                 $(modal).text("输入手机号");
-    //             } else if ("#" != $(this).text().trim()) {
-    //                 if ($(modal).text().trim().length <= 12) {
-    //                     if (window.index == 3) {
-    //                         window.phoneNumber[window.index] = " ";
-    //                         window.index++;
-    //                     } else if (window.index == 8) {
-    //                         window.phoneNumber[window.index] = " ";
-    //                         window.index++;
-    //                     }
-    //                     window.phoneNumber[window.index] = $(this).text().trim();
-    //                     $(modal).text(window.phoneNumber.join(""));
-    //                     window.index++;
-    //                 }
-    //             }
-    //         } else if (!$(".modal_code").hasClass("hide")) {
-    //             var count = $(".modal_item.checked").index();
-    //             window.code += $(this).text().trim();
-    //             $(".modal_item.checked>.code").text($(this).text().trim());
-    //             $(".modal_item").removeClass("checked");
-    //             var selector = ".modal_item:eq(" + (++count) + ")";
-    //             $(selector).addClass("checked");
-    //             if (count > 3) {
-    //                 setTimeout(function () {
-    //                     if (window.code == localStorage.getItem("code")) {
-    //                         $(".modal").addClass("hide");
-    //                         $(".modal_success").removeClass("hide");
-    //                     } else {
-    //                         $(".modal_code .modal_msg").text("验证码错误");
-    //                     }
-    //                     window.code = "";
-    //                     $(".modal_item .code").text("");
-    //                     $(".modal_item:eq(0)").addClass("checked");
-    //                 }, 100);
-    //             }
-    //         }
-    //     });
-    // })(jQuery, ".btn-num-item", ".modal .phone");
-
-    // (function ($, el, modal) {
-    //     $(el).on("click", function () {
-    //         $(modal).removeClass("hide");
-    //         var iHeight = $(".modal_keyboard .modal_content").outerHeight();
-    //         var fontSize = parseFloat($("html").css("fontSize"));
-    //         var translateY = "transform:translateY(" + (-iHeight / 2 / fontSize) + "rem)";
-    //         $(".modal_code .modal_content").attr("style", translateY);
-    //     })
-    // })(jQuery, ".modal_item .code", ".modal_keyboard");
+    (function ($, el) {
+        $(el).on("click", function () {
+            var phoneNumber = $("input[name='phone']").val().trim();
+            if (phoneNotEmptyCheck(phoneNumber)) {
+                ajaxPhoneRequestCheck(phoneNumber, "/");
+            }
+        });
+    })(jQuery, ".modal_phone .next", ".modal_code");
 
 
     new LimitFontSize({
-        switch: false,
+        iSwitch: false,
         element: ".btn-limit",
         targetElement: ".p-context",
         limitFontSize: 95,
     }).hide();
 
-    var keyboard = new Keyboard({
-        element: ".modal_keyboard",
-        btnCancel: ".btn-cancel",
-        btnConfirm: ".btn-confirm",
-        keyBtnElement: ".btn-num-item",
-
-    });
 
     (function ($, el, modal) {
         $(el).on("click", function () {
             $(modal).removeClass("hide");
-            keyboard.show().keyBtnPress(el);
         })
     })(jQuery, ".phone", ".modal_keyboard");
+
 
     (function ($, el, modal) {
         $(el).on("click", function () {
