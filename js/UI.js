@@ -126,6 +126,72 @@ TimeCountDown.prototype.stopTime = function () {
     if (this.timer) clearInterval(this.timer);
 }
 
+// 集成模态框验证插件
+
+function ModalBox(obj) {
+    this.element = obj.element ? obj.element : ".modal";
+    this.elementBg = obj.elementBg ? obj.elementBg : ".modal_bg";
+    this.elementInput = obj.elementInput ? obj.elementInput : "";
+    this.elementPreModal = obj.elementPreModal ? obj.elementPreModal : "";
+    this.elementBtnBack = obj.elementBtnBack ? obj.elementBtnBack : ".btn.back";
+    this.elementBtnNext = obj.elementBtnNext ? obj.elementBtnNext : ".btn.next";
+    this.elementBtnClose = obj.elementBtnClose ? obj.elementBtnClose : ".btn.close";
+    this.elementBtnCancel = obj.elementBtnCancel ? obj.elementBtnCancel : ".btn.cancel";
+    this.elementBtnConfirm = obj.elementBtnConfirm ? obj.elementBtnConfirm : ".btn.confirm";
+
+    this.close();
+    this.back();
+}
+
+ModalBox.prototype.show = function () {
+    $(".shop_body").addClass("blur");
+    if (!$("html").hasClass("hidden")) {
+        $("html").addClass("hidden");
+    }
+    if (this) $(this.element).removeClass("hide");
+    return this;
+}
+
+ModalBox.prototype.hide = function () {
+    $(".shop_body").removeClass("blur");
+    if ($("html").hasClass("hidden")) {
+        $("html").removeClass("hidden");
+    }
+    $(".modal").addClass("hide");
+    return this;
+}
+
+ModalBox.prototype.close = function () {
+    var _protoObj_ = this;
+    var selector = this.elementBtnClose + "," + this.elementBtnCancel + "," + this.elementBg;
+    $(selector).on("click", function () {
+        _protoObj_.hide();
+    });
+    return this;
+}
+
+ModalBox.prototype.back = function () {
+    var _protoObj_ = this;
+    if (_protoObj_.elementBtnBack) {
+        $(_protoObj_.elementBtnBack).on("click", function () {
+            _protoObj_.hide();
+            $(_protoObj_.elementPreModal).removeClass("hide");
+        })
+    }
+    return this;
+}
+
+ModalBox.prototype.confirm = function (fn) {
+    var _protoObj_ = this;
+    if (_protoObj_.elementBtnConfirm) {
+        $(_protoObj_.elementBtnConfirm).on("click", function () {
+            _protoObj_.hide();
+            fn();
+        })
+    }
+    return this;
+}
+
 
 function setFontSize() {
     var iFontSize = $(window).width() / 3.75 + "px";

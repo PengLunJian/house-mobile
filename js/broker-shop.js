@@ -94,41 +94,41 @@ $(function () {
     }
 
 
-    (function ($, el, modal) {
-        $(el).on("click", function () {
-            $("html").addClass("hidden");
-            $(".shop_body").addClass("blur");
-            $(modal).removeClass("hide");
-        });
-    })(jQuery, ".icon-message", ".modal_login");
-
-
-    (function ($, el, modal) {
-        $(el).on("click", function () {
-            $(".modal").addClass("hide");
-            $(modal).removeClass("hide");
-        });
-    })(jQuery, ".modal_login .confirm", ".modal_phone");
-
-
-    (function ($, el, modal) {
-        $(el).on("click", function () {
-            $(modal).addClass("hide");
-            var className = "." + $(this).attr("data-back-modal");
-            $(className).removeClass("hide");
-            $(".modal_content").attr("style", "");
-        });
-    })(jQuery, ".modal .back", ".modal");
-
-
-    (function ($, el) {
-        $(el).on("click", function () {
-            var phoneNumber = $("input[name='phone']").val().trim();
-            if (phoneNotEmptyCheck(phoneNumber)) {
-                ajaxPhoneRequestCheck(phoneNumber, "/");
-            }
-        });
-    })(jQuery, ".modal_phone .next", ".modal_code");
+    // (function ($, el, modal) {
+    //     $(el).on("click", function () {
+    //         $("html").addClass("hidden");
+    //         $(".shop_body").addClass("blur");
+    //         $(modal).removeClass("hide");
+    //     });
+    // })(jQuery, ".icon-message", ".modal_login");
+    //
+    //
+    // (function ($, el, modal) {
+    //     $(el).on("click", function () {
+    //         $(".modal").addClass("hide");
+    //         $(modal).removeClass("hide");
+    //     });
+    // })(jQuery, ".modal_login .confirm", ".modal_phone");
+    //
+    //
+    // (function ($, el, modal) {
+    //     $(el).on("click", function () {
+    //         $(modal).addClass("hide");
+    //         var className = "." + $(this).attr("data-back-modal");
+    //         $(className).removeClass("hide");
+    //         $(".modal_content").attr("style", "");
+    //     });
+    // })(jQuery, ".modal .back", ".modal");
+    //
+    //
+    // (function ($, el) {
+    //     $(el).on("click", function () {
+    //         var phoneNumber = $("input[name='phone']").val().trim();
+    //         if (phoneNotEmptyCheck(phoneNumber)) {
+    //             ajaxPhoneRequestCheck(phoneNumber, "/");
+    //         }
+    //     });
+    // })(jQuery, ".modal_phone .next", ".modal_code");
 
 
     new LimitFontSize({
@@ -139,21 +139,53 @@ $(function () {
     }).hide();
 
 
-    (function ($, el, modal) {
-        $(el).on("click", function () {
-            $(modal).removeClass("hide");
+    // (function ($, el, modal) {
+    //     $(el).on("click", function () {
+    //         $(modal).removeClass("hide");
+    //     })
+    // })(jQuery, ".phone", ".modal_keyboard");
+    //
+    //
+    // (function ($, el, modal) {
+    //     $(el).on("click", function () {
+    //         $("html").removeClass("hidden");
+    //         $(modal).addClass("hide");
+    //         $(".shop_body").removeClass("blur");
+    //         $(".modal_content").attr("style", "");
+    //     });
+    // })(jQuery, ".modal_bg,.btn.close,.modal_login .cancel", ".modal");
+
+
+    (function ($, element) {
+
+        $(element).on("click", function () {
+            var modalLogin = new ModalBox({
+                element: ".modal_login"
+            });
+            var modalPhone = new ModalBox({
+                element: ".modal_phone",
+                elementPreModal: ".modal_login"
+            });
+            var modalCode = new ModalBox({
+                element: ".modal_code",
+                elementPreModal: ".modal_phone"
+            })
+            var modalSuccess = new ModalBox({
+                element: ".modal_success",
+                elementPreModal: ".modal_code"
+            })
+            modalLogin.show();
+            modalLogin.confirm(function () {
+                modalPhone.show();
+                modalPhone.confirm(function () {
+                    modalCode.show();
+                    modalCode.confirm(function () {
+                        modalSuccess.show();
+                    })
+                })
+            })
         })
-    })(jQuery, ".phone", ".modal_keyboard");
-
-
-    (function ($, el, modal) {
-        $(el).on("click", function () {
-            $("html").removeClass("hidden");
-            $(modal).addClass("hide");
-            $(".shop_body").removeClass("blur");
-            $(".modal_content").attr("style", "");
-        });
-    })(jQuery, ".modal_bg,.btn.close,.modal_login .cancel", ".modal");
+    })(jQuery, ".icon-message");
 });
 
 
