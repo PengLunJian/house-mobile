@@ -156,36 +156,58 @@ $(function () {
     // })(jQuery, ".modal_bg,.btn.close,.modal_login .cancel", ".modal");
 
 
-    (function ($, element) {
+    var modalLogin = new ModalBox({
+        element: ".modal_login",
+        elementNextModal: ".modal_phone"
+    });
+    var modalPhone = new ModalBox({
+        element: ".modal_phone",
+        elementPrevModal: ".modal_login",
+        elementNextModal: ".modal_code"
+    });
+    var modalCode = new ModalBox({
+        element: ".modal_code",
+        elementPrevModal: ".modal_phone",
+        elementNextModal: ".modal_success"
+    });
+    var modalSuccess = new ModalBox({
+        element: ".modal_success",
+        elementPrevModal: ".modal_code"
+    });
 
-        $(element).on("click", function () {
-            var modalLogin = new ModalBox({
-                element: ".modal_login"
-            });
-            var modalPhone = new ModalBox({
-                element: ".modal_phone",
-                elementPreModal: ".modal_login"
-            });
-            var modalCode = new ModalBox({
-                element: ".modal_code",
-                elementPreModal: ".modal_phone"
-            })
-            var modalSuccess = new ModalBox({
-                element: ".modal_success",
-                elementPreModal: ".modal_code"
-            })
+    $(".icon-message").on("click", function () {
+        modalLogin.show();
+    });
+
+    $(modalLogin.elementBtnBack).on("click", function () {
+        var $_modal = $(this).parents(".modal").attr("class");
+        var regExp = /modal\s|' '|hide/g;
+        var modalName = "."+$_modal.replace(regExp, "");
+        if (modalName == modalPhone.elementPrevModal) {
+            modalPhone.hide();
             modalLogin.show();
-            modalLogin.confirm(function () {
-                modalPhone.show();
-                modalPhone.confirm(function () {
-                    modalCode.show();
-                    modalCode.confirm(function () {
-                        modalSuccess.show();
-                    })
-                })
-            })
-        })
-    })(jQuery, ".icon-message");
+        } else if (modalName == modalCode.elementPrevModal) {
+            modalCode.hide();
+            modalPhone.show();
+        }else if (modalName == modalSuccess.elementPrevModal) {
+            modalSuccess.hide();
+            modalCode.show();
+        }
+    });
+
+    $(modalLogin.elementBtnConfirm).on("click", function () {
+        var $_modal = $(this).parents(".modal");
+        if ($_modal.hasClass(modalLogin.element.substring(1))) {
+            modalLogin.hide();
+            modalPhone.show();
+        } else if ($_modal.hasClass(modalPhone.element.substring(1))) {
+            modalPhone.hide();
+            modalCode.show();
+        } else if ($_modal.hasClass(modalCode.element.substring(1))) {
+            modalCode.hide();
+            modalSuccess.show();
+        }
+    });
 });
 
 

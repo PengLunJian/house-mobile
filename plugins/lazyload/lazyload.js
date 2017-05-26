@@ -10,8 +10,6 @@
 
 //延时加载方式一 Method One
 (function lazyLoad() {
-
-
     var timer = null;
 
     function lazyLoad(index) {
@@ -47,29 +45,29 @@
 
 //延时加载方式二 Method Second
 
-/*function lazyLoad(){
- timer = setTimeout(function(){
- var iHeight = $(window).height();
- $("img[data-loaded='false']").each(function(){
- var $_obj = $(this);
- var offsetTop = $_obj.parent().offset().top;
- var scrollTop = $(document).scrollTop();
- if(offsetTop-scrollTop<=iHeight){
- $_obj.attr("data-loaded","true");
- var tempImg = new Image();
- tempImg.src = $_obj.attr("data-original");
- $(tempImg).load(function(){
- $_obj.css("opacity",0);
- $_obj.attr("src",$_obj.attr("data-original"));
- $_obj.animate({"opacity":1},300);
- })
- }
- });
- },100);
- }
- $(function(){
- lazyLoad();
- $(window).scroll(function(){
- lazyLoad();
- })
- });*/
+// function lazyLoad() {
+//     timer = setTimeout(function () {
+//         var iHeight = $(window).height();
+//         $("img[data-loaded='false']").each(function () {
+//             var $_obj = $(this);
+//             var offsetTop = $_obj.parent().offset().top;
+//             var scrollTop = $(document).scrollTop();
+//             if (offsetTop - scrollTop <= iHeight) {
+//                 $_obj.attr("data-loaded", "true");
+//                 var tempImg = new Image();
+//                 tempImg.src = $_obj.attr("data-original");
+//                 $(tempImg).load(function () {
+//                     $_obj.css("opacity", 0);
+//                     $_obj.attr("src", $_obj.attr("data-original"));
+//                     $_obj.animate({"opacity": 1}, 300);
+//                 })
+//             }
+//         });
+//     }, 100);
+// }
+// $(function () {
+//     lazyLoad();
+//     $(window).scroll(function () {
+//         lazyLoad();
+//     })
+// });

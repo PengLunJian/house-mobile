@@ -240,11 +240,11 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 }
 
 .home_page .header {
-    height: 0.45rem;
     position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
+    height: 0.45rem;
     z-index: 1000;
     text-align: center;
     line-height: 0.45rem;
@@ -1327,6 +1327,95 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     background-color: #ff8447;
 }
 
+.modal.modal_chat .modal_content {
+    top: auto;
+    bottom: 0px;
+    height: 100%;
+    padding-top: 0.5rem;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.modal.modal_chat.hide .modal_content {
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+.modal.modal_chat .modal_content .item_img {
+    width: 21.335%;
+    padding: 0.1rem 0.15rem;
+}
+
+.modal.modal_chat .modal_content .item_img img {
+    height: 0.5rem;
+    display: block;
+}
+
+.modal.modal_chat .modal_content .item_info {
+    width: 78.665%;
+    height: 0.7rem;
+    text-align: justify;
+    border-bottom: 1px solid #dedede;
+    padding: 0.15rem 0.15rem 0.15rem 0rem;
+}
+
+.modal.modal_chat .modal_content .chat_item:last-child .item_info {
+    border: none;
+}
+
+.modal.modal_chat .modal_content .item_info .item_lv1 {
+    line-height: 0.2rem;
+}
+
+.modal.modal_chat .modal_content .item_info .item_name {
+    color: #151515;
+    font-size: 0.17rem;
+}
+
+.modal.modal_chat .modal_content .item_info .item_time {
+    color: #b9b9b9;
+    font-size: 0.12rem;
+}
+
+.modal.modal_chat .modal_content .item_info .item_detail {
+    color: #878787;
+    font-size: 0.14rem;
+}
+
+.modal.modal_chat .modal_header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    color: #1e7ade;
+    font-size: 0.16rem;
+    text-align: center;
+    line-height: 0.5rem;
+    border-bottom: 1px solid #dedede;
+}
+
+.modal.modal_chat .modal_header .modal_title {
+    font-weight: normal;
+    font-size: 0.18rem;
+    letter-spacing: 2px;
+}
+
+.modal.modal_chat .modal_header .icon-close {
+    position: absolute;
+    width: 0.5rem;
+    height: 100%;
+    top: 0px;
+    right: 0px;
+    color: #484848;
+    line-height: 0.5rem;
+}
+
 .modal .modal_footer {
     position: absolute;
     left: 0rem;
@@ -2020,8 +2109,11 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 .shop_page .modal .modal_footer .btn {
     width: auto;
     height: 0.4rem;
+    color: #1e81ee;
     font-size: 0.15rem;
     line-height: 0.4rem;
+    border-color: #dedede;
+    background-color: transparent;
 }
 
 .shop_page .modal.modal_login .modal_content {
@@ -2164,9 +2256,6 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 
 .shop_page .modal.modal_code .modal_item.checked .code {
     border-color: #1eb8df;
-    -webkit-box-shadow: 0px 0px 10px #1eb8df;
-    -moz-box-shadow: 0px 0px 10px #1eb8df;
-    box-shadow: 0px 0px 10px #1eb8df;
 }
 
 .shop_page .modal.modal_success .modal_content {

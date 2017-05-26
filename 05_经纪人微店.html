@@ -346,7 +346,7 @@
         </div>
     </div>
     <!------ 认证弹窗一 ------>
-    <div class="modal modal_login hide">
+    <div class="modal modal_login hide" data-next="modal_phone">
         <div class="modal_bg"></div>
         <div class="modal_content">
             <div class="modal_header"></div>
@@ -362,11 +362,11 @@
 
     </div>
     <!------ 认证弹窗二 ------>
-    <div class="modal modal_phone hide">
+    <div class="modal modal_phone hide" data-prev="modal_login" data-next="modal_code">
         <div class="modal_bg"></div>
         <div class="modal_content">
             <div class="modal_header">
-                <a href="javascript:void(0);" class="btn back icon-back" data-back-modal="modal_login"></a>
+                <a href="javascript:void(0);" class="btn back icon-back"></a>
                 <a href="javascript:void(0);" class="btn close icon-close"></a>
             </div>
             <div class="modal_body">
@@ -375,16 +375,16 @@
                 <input type="tel" class="phone" name="phone" placeholder="输入手机号" maxlength="11"/>
             </div>
             <div class="modal_footer">
-                <a href="javascript:void(0);" class="btn confirm">下一步</a>
+                <a href="javascript:void(0);" class="btn confirm" data-next="modal_code">下一步</a>
             </div>
         </div>
     </div>
     <!------ 认证弹窗三 ------>
-    <div class="modal modal_code hide">
+    <div class="modal modal_code hide" data-prev="modal_phone" data-next="modal_success">
         <div class="modal_bg"></div>
         <div class="modal_content">
             <div class="modal_header">
-                <a href="javascript:void(0);" class="btn back icon-back" data-back-modal="modal_phone"></a>
+                <a href="javascript:void(0);" class="btn back icon-back"></a>
                 <a href="javascript:void(0);" class="btn close icon-close"></a>
             </div>
             <div class="modal_body">
@@ -411,7 +411,7 @@
         </div>
     </div>
     <!------ 认证弹窗四 ------>
-    <div class="modal modal_success hide">
+    <div class="modal modal_success hide" data-prev="modal_code">
         <div class="modal_bg"></div>
         <div class="modal_content">
             <div class="modal_header"></div>
