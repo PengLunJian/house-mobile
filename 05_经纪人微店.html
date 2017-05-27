@@ -346,7 +346,7 @@
         </div>
     </div>
     <!------ 认证弹窗一 ------>
-    <div class="modal modal_login hide" data-next="modal_phone">
+    <div class="modal modal_login hide">
         <div class="modal_bg"></div>
         <div class="modal_content">
             <div class="modal_header"></div>
@@ -362,7 +362,7 @@
 
     </div>
     <!------ 认证弹窗二 ------>
-    <div class="modal modal_phone hide" data-prev="modal_login" data-next="modal_code">
+    <div class="modal modal_phone hide">
         <div class="modal_bg"></div>
         <div class="modal_content">
             <div class="modal_header">
@@ -380,7 +380,7 @@
         </div>
     </div>
     <!------ 认证弹窗三 ------>
-    <div class="modal modal_code hide" data-prev="modal_phone" data-next="modal_success">
+    <div class="modal modal_code hide">
         <div class="modal_bg"></div>
         <div class="modal_content">
             <div class="modal_header">
@@ -388,6 +388,7 @@
                 <a href="javascript:void(0);" class="btn close icon-close"></a>
             </div>
             <div class="modal_body">
+                <input type="number" name="code" class="none"/>
                 <h3 class="modal_title">输入验证码</h3>
                 <p class="modal_msg"></p>
                 <p class="modal_info">验证码发送至136 4676 8536</p>
@@ -411,7 +412,7 @@
         </div>
     </div>
     <!------ 认证弹窗四 ------>
-    <div class="modal modal_success hide" data-prev="modal_code">
+    <div class="modal modal_success hide">
         <div class="modal_bg"></div>
         <div class="modal_content">
             <div class="modal_header"></div>

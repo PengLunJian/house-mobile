@@ -11,7 +11,6 @@ function MoveBar(obj) {
     this.ajaxFunction = obj.ajaxFunction;
     this.dataIndex = obj.dataIndex ? obj.dataIndex : 0;
 }
-
 /**
  * BEGIN 选项卡选中状态
  * Author:PengLunJian
@@ -31,7 +30,6 @@ MoveBar.prototype.startMove = function () {
         if ("function" == typeof tempObj.ajaxFunction) tempObj.ajaxFunction();
     });
 }
-
 /**
  * BEGIN 设置选项卡滚动条样式
  * Author:PengLunJian
@@ -46,7 +44,6 @@ MoveBar.prototype.setTranslate = function (value) {
         + 'transform: translateX(' + value + 'rem);';
     $(this.element).attr("style", style);
 }
-
 /**
  * BEGIN 编写字数限制插件
  * Author:PengLunJian
@@ -68,9 +65,10 @@ function LimitFontSize(obj) {
         $(this.targetElement).text(this.targetElementText.substring(0, this.limitFontSize) + "...");
     }
 }
-
 /**
- * 字数限制原型Hide方法
+ * BEGIN 字数限制原型Hide方法
+ * Author:PengLunJian
+ * Date:2017-05-10
  */
 LimitFontSize.prototype.hide = function () {
     var tempObj = this;
@@ -88,7 +86,6 @@ LimitFontSize.prototype.hide = function () {
         });
     }
 }
-
 /**
  * BEGIN 倒计时插件
  * Author:PengLunJian
@@ -103,11 +100,15 @@ function TimeCountDown(obj) {
     this.initTime = obj.time ? obj.time : 60;
     this.finishFn = obj.fn;
 }
-
-// 开始倒计时方法
+/**
+ * BEGIN 开始倒计时方法
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {TimeCountDown} 返回当前对象实现连缀调用
+ */
 TimeCountDown.prototype.startTime = function () {
     var tempObj = this;
-    var text = $(tempObj.el).text().trim().replace(/\d/g, "");
+    var text = " 秒后重发";
     $(tempObj.el).addClass("disabled");
     $(tempObj.el).attr("disabled", "disabled");
     tempObj.timer = setTimeout(function () {
@@ -119,97 +120,343 @@ TimeCountDown.prototype.startTime = function () {
             tempObj.finishFn();
         }
     }, 1000);
+    return this;
 }
-
-// 停止倒计时方法
+/**
+ * BEGIN 停止倒计时方法
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {TimeCountDown} 返回当前对象实现连缀调用
+ */
 TimeCountDown.prototype.stopTime = function () {
+    $(this.el).removeClass("disabled");
+    $(this.el).text(this.initTime + " 秒后重发");
+    $(this.el).removeAttr("disabled");
     if (this.timer) clearInterval(this.timer);
+    return this;
 }
-
-// 集成模态框验证插件
-
+/**
+ * BEGIN 重新启动计时器
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @param fn 回调函数可执行其他操作
+ * @returns {TimeCountDown} 返回当前对象实现连缀调用
+ */
+TimeCountDown.prototype.restartTime = function (fn) {
+    var _protoObj_ = this;
+    $(_protoObj_.el).off("click").on("click", function () {
+        if (!$(_protoObj_.el).hasClass("disabled")) {
+            _protoObj_.startTime();
+            fn();
+        }
+    });
+    return this;
+}
+/**
+ * BEGIN 集成个人验证模态框插件
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @param obj 对象形参
+ * @constructor 验证模态框构造函数
+ */
 function ModalBox(obj) {
-    this.element = obj.element ? obj.element : ".modal";
+    this.elements = obj.elements ? obj.elements : null;
     this.elementBg = obj.elementBg ? obj.elementBg : ".modal_bg";
     this.elementInput = obj.elementInput ? obj.elementInput : "";
-    this.elementPrevModal = obj.elementPrevModal ? obj.elementPrevModal : "";
-    this.elementNextModal = obj.elementNextModal ? obj.elementNextModal : "";
     this.elementBtnBack = obj.elementBtnBack ? obj.elementBtnBack : ".btn.back";
     this.elementBtnNext = obj.elementBtnNext ? obj.elementBtnNext : ".btn.next";
     this.elementBtnClose = obj.elementBtnClose ? obj.elementBtnClose : ".btn.close";
     this.elementBtnCancel = obj.elementBtnCancel ? obj.elementBtnCancel : ".btn.cancel";
     this.elementBtnConfirm = obj.elementBtnConfirm ? obj.elementBtnConfirm : ".btn.confirm";
 
-    this.close();
+    this.oTime = null, this.phone = null, this.code = null;
+    this.closeModal().prevModal().nextModal().checkCode();
 }
+/**
+ * BEGIN 重置模态框状态
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {ModalBox} 返回当前对象实现连缀调用
+ */
+ModalBox.prototype.resetStatus = function () {
+    $(".modal_msg").text("");
+    $("input[name='phone']").val("");
+    if (this.oTime) this.oTime.stopTime();
 
+    this.code = "";
+    $("input[name='code']").val("");
+    $(".modal_item .code").text("");
+    $(".modal_item").removeClass("checked");
+    $(".modal_item:eq(0)").addClass("checked");
+    return this;
+}
+/**
+ * BEGIN 显示入口验证模态框
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {ModalBox} 返回当前对象实现连缀调用
+ */
 ModalBox.prototype.show = function () {
     $(".shop_body").addClass("blur");
     if (!$("html").hasClass("hidden")) {
         $("html").addClass("hidden");
     }
-    if (this) $(this.element).removeClass("hide");
+    $(this.elements[0]).removeClass("hide");
     return this;
 }
-
+/**
+ * BEGIN 显示入口验证模态框
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {ModalBox} 返回当前对象实现连缀调用
+ */
 ModalBox.prototype.hide = function () {
     $(".shop_body").removeClass("blur");
     if ($("html").hasClass("hidden")) {
         $("html").removeClass("hidden");
     }
-    $(".modal").addClass("hide");
+    for (var i = 0; i < this.elements.length; i++) {
+        $(this.elements[i]).addClass("hide");
+    }
     return this;
 }
-
-ModalBox.prototype.close = function () {
+/**
+ * BEGIN 显示入口验证模态框
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {ModalBox} 返回当前对象实现连缀调用
+ */
+ModalBox.prototype.closeModal = function () {
     var _protoObj_ = this;
     var selector = this.elementBtnClose + "," + this.elementBtnCancel + "," + this.elementBg;
-    $(selector).off("click").on("click", function () {
+    $(selector).on("click", function () {
         _protoObj_.hide();
+        _protoObj_.resetStatus();
     });
     return this;
 }
-
-ModalBox.prototype.showPrevModal = function () {
+/**
+ * BEGIN 显示入口验证模态框
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {ModalBox} 返回当前对象实现连缀调用
+ */
+ModalBox.prototype.prevModal = function () {
     var _protoObj_ = this;
     if (_protoObj_.elementBtnBack) {
-        $(_protoObj_.elementBtnBack).off("click").on("click", function () {
-            _protoObj_.hide();
-            $(_protoObj_.elementPrevModal).addClass("hide");
-            var $_selfModal = $(this).parents(".modal");
-            var $_prevModal = "." + $_selfModal.attr("data-prev");
-            $_selfModal.addClass("hide");
-            $($_prevModal).removeClass("hide");
+        $(_protoObj_.elementBtnBack).on("click", function () {
+            var className = $(this).parents(".modal").attr("class");
+            var regExp = /modal\s|' '|hide/g;
+            var filterName = "." + className.replace(regExp, "");
+            _protoObj_.resetStatus();
+            if (_protoObj_.oTime) _protoObj_.oTime.stopTime();
+            for (var i = 0; i < _protoObj_.elements.length; i++) {
+                if (filterName == _protoObj_.elements[i] && (i - 1) >= 0) {
+                    _protoObj_.hide();
+                    $(".shop_body").addClass("blur");
+                    if (!$("html").hasClass("hidden")) {
+                        $("html").addClass("hidden");
+                    }
+                    $(_protoObj_.elements[i - 1]).removeClass("hide");
+                    return this;
+                }
+            }
         })
     }
     return this;
 }
-
-// ModalBox.prototype.showNextModal = function (fn) {
-//     var _protoObj_ = this;
-//     if (_protoObj_.elementBtnConfirm) {
-//         $(_protoObj_.elementBtnConfirm).off("click").on("click", function () {
-//             var $_selfModal = $(this).parents(".modal");
-//             var $_nextModal = "." + $_selfModal.attr("data-next");
-//             $_selfModal.addClass("hide");
-//             _protoObj_.hide();
-//             fn();
-//         })
-//     }
-//     return this;
-// }
-
-
-function setFontSize() {
+/**
+ * BEGIN 手机号非空校验
+ * Author:PengLunJian
+ * Date:2017-05-19
+ * @param phoneNumber 用户输入的手机号
+ * @returns {boolean} 返回布尔类型
+ */
+ModalBox.prototype.phoneNotEmptyCheck = function (phoneNumber) {
+    var message = "";
+    var result = false;
+    var regExp = /^1\d{10}$/;
+    if (!phoneNumber || "输入手机号" == phoneNumber) {
+        message = "手机号不能为空";
+    } else if (!regExp.test(phoneNumber)) {
+        message = "手机号格式不正确";
+    } else {
+        result = true;
+    }
+    if (!result) {
+        $(".modal_phone .modal_msg").text(message);
+    }
+    return result;
+}
+/**
+ * BEGIN 服务器端手机验证
+ * Author:PengLunJian
+ * Date:2017-05-19
+ * @param phoneNumber 用户输入的手机号
+ * @param url 服务器端访问路径
+ */
+ModalBox.prototype.ajaxRequestPhoneCheck = function (phoneNumber, url) {
+    var _protoObj_ = this;
+    $(".modal_code .modal_info").text("验证码发送至" + phoneNumber);
+    $.ajax({
+        url: url,
+        type: "POST",
+        async: true,
+        timeout: 2000,
+        dataType: "JSON",
+        data: {phoneNumber: phoneNumber},
+        success: function (data) {
+            $(_protoObj_.elements[2] + " .modal_msg").text(data);
+            localStorage.setItem("code", "1234");
+        },
+        error: function (msg) {
+            msg = "服务器连接异常！";
+            $(_protoObj_.elements[2] + " .modal_msg").text(msg);
+            localStorage.setItem("code", "1234");
+        }
+    })
+}
+/**
+ * BEGIN 显示入口验证模态框
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {ModalBox} 返回当前对象实现连缀调用
+ */
+ModalBox.prototype.nextModal = function () {
+    var _protoObj_ = this;
+    $(_protoObj_.elementBtnConfirm).on("click", function () {
+        var className = $(this).parents(".modal").attr("class");
+        var regExp = /modal\s|' '|hide/g;
+        var filterName = "." + className.replace(regExp, "");
+        for (var i = 0; i < _protoObj_.elements.length; i++) {
+            if (filterName == _protoObj_.elements[i]) {
+                $(".shop_body").addClass("blur");
+                if (!$("html").hasClass("hidden")) $("html").addClass("hidden");
+                switch (i) {
+                    case 0:
+                        _protoObj_.hide();
+                        $(".shop_body").addClass("blur");
+                        if (!$("html").hasClass("hidden")) $("html").addClass("hidden");
+                        $(_protoObj_.elements[i + 1]).removeClass("hide");
+                        break;
+                    case 1:
+                        var phoneNumber = $("input[name='phone']").val().trim();
+                        if (_protoObj_.phoneNotEmptyCheck(phoneNumber)) {
+                            _protoObj_.hide();
+                            $(".shop_body").addClass("blur");
+                            if (!$("html").hasClass("hidden")) $("html").addClass("hidden");
+                            $(_protoObj_.elements[i + 1]).removeClass("hide");
+                            _protoObj_.oTime = new TimeCountDown({
+                                time: 60,
+                                el: ".btn.send",
+                                fn: function () {
+                                    this.time = this.initTime;
+                                    $(this.el).html("重新获取");
+                                    $(this.el).removeClass("disabled");
+                                    $(this.el).removeAttr("disabled");
+                                }
+                            });
+                            _protoObj_.oTime.startTime();
+                            _protoObj_.ajaxRequestPhoneCheck(phoneNumber, "/demo");
+                            _protoObj_.oTime.restartTime(function () {
+                                _protoObj_.ajaxRequestPhoneCheck(phoneNumber, "/demo");
+                            });
+                        }
+                        break;
+                }
+            }
+        }
+    });
+    return this;
+}
+/**
+ * BEGIN 核对验证码
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {ModalBox} 返回当前对象实现连缀调用
+ */
+ModalBox.prototype.checkCode = function () {
+    var _protoObj_ = this;
+    var constKeyCode = 48;
+    $(".modal_item .code").on("click", function () {
+        $("input[name='code']").focus();
+    });
+    $("input[name='code']").on("keyup", function (e) {
+        _protoObj_.code = $(this).val().trim();
+        var selector = ".modal_item:eq(" + (_protoObj_.code.length - 1) + ") .code";
+        if (e.keyCode == 8) {
+            selector = ".modal_item:eq(" + (_protoObj_.code.length) + ") .code";
+            $(selector).text("");
+        } else {
+            $(selector).text(e.keyCode - constKeyCode);
+        }
+        var afterCode = localStorage.getItem("code");
+        $(".modal_item").removeClass("checked");
+        selector = ".modal_item:eq(" + _protoObj_.code.length + ")";
+        $(selector).addClass("checked");
+        if (_protoObj_.code.length >= 4) {
+            if (_protoObj_.code == afterCode) {
+                $(this).blur();
+                _protoObj_.hide();
+                $(".shop_body").addClass("blur");
+                if (!$("html").hasClass("hidden")) $("html").addClass("hidden");
+                $(_protoObj_.elements[3]).removeClass("hide");
+            } else {
+                $(".modal_code .modal_msg").text("验证码输入错误！");
+            }
+            _protoObj_.code = "";
+            $("input[name='code']").val("");
+            $(".modal_item .code").text("");
+            $(".modal_item").removeClass("checked");
+            $(".modal_item:eq(0)").addClass("checked");
+        }
+    });
+    return this;
+}
+/**
+ * BEGIN 设置字体大小
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @param obj 对象形参
+ * @constructor 构造函数
+ */
+function HtmlFontSize(obj) {
+    this.element = obj.element;
+    this.runSetFontSize();
+}
+/**
+ * BEGIN 设置字体大小方法
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @param selector 选择器
+ * @returns {HtmlFontSize} 返回当前对象实现连缀调用
+ */
+HtmlFontSize.prototype.setFontSize = function (selector) {
     var iFontSize = $(window).width() / 3.75 + "px";
-    $("html").css("fontSize", iFontSize);
+    $(selector).css("fontSize", iFontSize);
+    return this;
+}
+/**
+ * BEGIN 调用设置字体大小
+ * Author:PengLunJian
+ * Date:2017-05-27
+ * @returns {HtmlFontSize} 返回当前对象实现连缀调用
+ */
+HtmlFontSize.prototype.runSetFontSize = function () {
+    var _protoObj_ = this;
+    $(function () {
+        _protoObj_.setFontSize(_protoObj_.element);
+        $(window).resize(function () {
+            _protoObj_.setFontSize(_protoObj_.element);
+        });
+        document.body.addEventListener('touchstart', function () {
+        });
+    });
+    return this;
 }
 
-$(function () {
-    setFontSize();
-    $(window).resize(function () {
-        setFontSize();
-    });
-    // document.body.addEventListener('touchstart', function () {
-    // });
+new HtmlFontSize({
+    element: "html"
 });
+
+
