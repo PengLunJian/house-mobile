@@ -20,7 +20,12 @@ $(function () {
     });
 
     $(".icon-message").on("click", function () {
-        modalBox.show();
+        var url = "http://gl.2ma2.com/ashx/IMAjax.ashx";
+        var paramsObj = {
+            method: "sel_tel",
+            userid: "osZl4jjpN6OO58xgTZSUgxlUpRYb"//$("#user_id").val()
+        };
+        modalBox.isChecked(url, paramsObj);
     });
 });
 

@@ -413,6 +413,36 @@ ModalBox.prototype.checkCode = function () {
     });
     return this;
 }
+
+/**
+ * BEGIN 判断用户是否认证
+ * Author:PengLunJian
+ * Date:2017-06-02
+ * @param url 接口访问路径
+ * @param paramsObj 对象形参
+ * @returns {ModalBox} 返回当前对象实现连缀调用
+ */
+ModalBox.prototype.isChecked = function (url, paramsObj) {
+    var _protoObj_ = this;
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: paramsObj,
+        dataType: "JSON",
+        success: function (data) {
+            if (data == 0) {
+                _protoObj_.show();
+            } else {
+                localStorage.setItem("phone", data);
+                window.location.href = "07_聊天页面.html";
+            }
+        },
+        error: function (msg) {
+
+        }
+    });
+    return this;
+}
 /**
  * BEGIN 设置字体大小
  * Author:PengLunJian
