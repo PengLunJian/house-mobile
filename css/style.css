@@ -65,6 +65,7 @@ body {
     top: 0px;
     left: 0px;
     width: 100%;
+    display: flex;
     height: 100% !important;
     overflow: hidden !important;
 }
@@ -2547,11 +2548,16 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 }
 
 .chat_page {
+    width: 100%;
     position: relative;
     background-color: #e4e7ec;
 }
 
-.chat_page .session {
+.chat_page .session_container {
+    position: relative;
+}
+
+.chat_page .session_content {
     min-height: 100vh;
     position: relative;
     padding-bottom: 0.58rem;
@@ -2699,6 +2705,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     z-index: 1000;
     font-size: 0px;
     background-color: #ffffff;
+    border-top: 1px solid #dedede;
     padding: 0.06rem 1rem 0.06rem 0.25rem;
 }
 
@@ -2730,15 +2737,21 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     background-color: #417de6;
 }
 
-.chat_page .load_more {
-    position: absolute;
-    top: -0.6rem;
-    left: 0px;
+.chat_page #load_more {
     width: 100%;
-    height: 0.6rem;
     overflow: hidden;
+    color: #999999;
+    font-size: 0.14rem;
     text-align: center;
-    line-height: 0.6rem;
+    line-height: 0.24rem;
+    padding-top: 0.16rem;
+}
+
+.chat_page #load_more img {
+    display: block;
+    width: 0.24rem;
+    height: 0.24rem;
+    margin: 0rem auto;
 }
 
 /*** 项目页面加载动画Css Style Code ***/

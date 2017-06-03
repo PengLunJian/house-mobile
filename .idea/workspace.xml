@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31b01e75-2bd2-429d-ac26-aeb2447c75fb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/IM.API/NIM_Web_Chatroom_v3.6.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/IM.API/NIM_Web_NIM_v3.6.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/IM.API/NIM_Web_Netcall_v3.6.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/IM.API/NIM_Web_SDK_v3.6.0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/iscroll/iscroll.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/load_more.gif" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/07_聊天页面.html" afterPath="$PROJECT_DIR$/07_聊天页面.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/UI.js" afterPath="$PROJECT_DIR$/js/UI.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/broker-shop.js" afterPath="$PROJECT_DIR$/js/broker-shop.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/session.page.js" afterPath="$PROJECT_DIR$/js/session.page.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,8 +28,8 @@
       <file leaf-file-name="UI.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/UI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-233">
-              <caret line="440" column="0" lean-forward="true" selection-start-line="440" selection-start-column="0" selection-end-line="440" selection-end-column="0" />
+            <state relative-caret-position="-559">
+              <caret line="440" column="0" lean-forward="false" selection-start-line="440" selection-start-column="0" selection-end-line="440" selection-end-column="0" />
               <folding>
                 <element signature="n#!!block;n#MoveBar#0" expanded="false" />
                 <element signature="e#410#995#0" expanded="false" />
@@ -65,67 +61,10 @@
       <file leaf-file-name="07_聊天页面.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/07_聊天页面.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="63" column="8" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+            <state relative-caret-position="319">
+              <caret line="92" column="5" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="92" selection-end-column="5" />
               <folding>
-                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="01_房屋首页.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_房屋首页.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="534" column="36" lean-forward="true" selection-start-line="531" selection-start-column="16" selection-end-line="534" selection-end-column="36" />
-              <folding>
-                <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="session.page.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/session.page.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="15" column="77" lean-forward="false" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
-              <folding>
-                <element signature="e#578#900#0" expanded="false" />
-                <element signature="e#2156#2516#0" expanded="false" />
-                <element signature="e#2624#2770#0" expanded="false" />
-                <element signature="e#2926#3384#0" expanded="false" />
-                <element signature="e#3538#3986#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="02_房屋列表.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/02_房屋列表.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="445" column="10" lean-forward="true" selection-start-line="436" selection-start-column="4" selection-end-line="445" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="05_经纪人微店.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/05_经纪人微店.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="412" column="10" lean-forward="true" selection-start-line="412" selection-start-column="10" selection-end-line="412" selection-end-column="10" />
-              <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#1;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -134,9 +73,22 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="2549" column="19" lean-forward="false" selection-start-line="2549" selection-start-column="19" selection-end-line="2549" selection-end-column="19" />
+            <state relative-caret-position="316">
+              <caret line="2746" column="25" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="2817" selection-end-column="1" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="session.page.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/session.page.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="559">
+              <caret line="184" column="46" lean-forward="true" selection-start-line="184" selection-start-column="46" selection-end-line="184" selection-end-column="46" />
+              <folding>
+                <element signature="e#671#997#0" expanded="false" />
+                <element signature="e#2261#2621#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,8 +105,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shop_page</find>
-      <find>tab_btn</find>
       <find>items</find>
       <find>.mge_page .tab-bar</find>
       <find>.shop_page .person</find>
@@ -178,11 +128,13 @@
       <find>.shop_page .modal.modal_code .modal_item.checked .code</find>
       <find>.show</find>
       <find>show</find>
-      <find>addMessage</find>
       <find>http://gl.2ma2.com/ashx/IMAjax.ashx</find>
       <find>setTemplate</find>
       <find>.chat_page li.fail .info p:after</find>
       <find>content_txt</find>
+      <find>getMessageTemplate</find>
+      <find>session</find>
+      <find>addMessage</find>
     </findStrings>
     <replaceStrings>
       <replace>col-md-6</replace>
@@ -282,17 +234,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../慕格html5" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\projects\house-mobile\plugins\iscroll" />
       <recent name="E:\projects\house-mobile\plugins\IM.API" />
       <recent name="E:\projects\house-mobile" />
       <recent name="E:\projects\house20170512\fonts" />
       <recent name="E:\projects\house20170511" />
-      <recent name="E:\projects\house20170421\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -429,16 +381,16 @@
       <workItem from="1496214208689" duration="3698000" />
       <workItem from="1496277767573" duration="3826000" />
       <workItem from="1496282492064" duration="19332000" />
-      <workItem from="1496364534786" duration="29233000" />
+      <workItem from="1496364534786" duration="29355000" />
+      <workItem from="1496453013609" duration="19493000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="377793000" />
+    <option name="totallyTimeSpent" value="397408000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1264489" sideWeight="0.4914842" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -471,13 +423,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/03_房屋详情.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12573">
@@ -751,8 +696,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/05_经纪人微店.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="412" column="10" lean-forward="true" selection-start-line="412" selection-start-column="10" selection-end-line="412" selection-end-column="10" />
+        <state relative-caret-position="891">
+          <caret line="412" column="10" lean-forward="false" selection-start-line="412" selection-start-column="10" selection-end-line="412" selection-end-column="10" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -768,24 +713,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/02_房屋列表.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="445" column="10" lean-forward="true" selection-start-line="436" selection-start-column="4" selection-end-line="445" selection-end-column="10" />
+        <state relative-caret-position="14685">
+          <caret line="445" column="10" lean-forward="false" selection-start-line="436" selection-start-column="4" selection-end-line="445" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_房屋首页.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="534" column="36" lean-forward="false" selection-start-line="531" selection-start-column="16" selection-end-line="534" selection-end-column="36" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/iscroll/iscroll.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="122" column="19" lean-forward="true" selection-start-line="122" selection-start-column="19" selection-end-line="122" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="2549" column="19" lean-forward="false" selection-start-line="2549" selection-start-column="19" selection-end-line="2549" selection-end-column="19" />
+        <state relative-caret-position="316">
+          <caret line="2746" column="25" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="2817" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/session.page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="184" column="46" lean-forward="true" selection-start-line="184" selection-start-column="46" selection-end-line="184" selection-end-column="46" />
+          <folding>
+            <element signature="e#671#997#0" expanded="false" />
+            <element signature="e#2261#2621#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/UI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-233">
-          <caret line="440" column="0" lean-forward="true" selection-start-line="440" selection-start-column="0" selection-end-line="440" selection-end-column="0" />
+        <state relative-caret-position="-559">
+          <caret line="440" column="0" lean-forward="false" selection-start-line="440" selection-start-column="0" selection-end-line="440" selection-end-column="0" />
           <folding>
             <element signature="n#!!block;n#MoveBar#0" expanded="false" />
             <element signature="e#410#995#0" expanded="false" />
@@ -813,36 +787,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/session.page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="15" column="77" lean-forward="false" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
-          <folding>
-            <element signature="e#578#900#0" expanded="false" />
-            <element signature="e#2156#2516#0" expanded="false" />
-            <element signature="e#2624#2770#0" expanded="false" />
-            <element signature="e#2926#3384#0" expanded="false" />
-            <element signature="e#3538#3986#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_房屋首页.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="534" column="36" lean-forward="true" selection-start-line="531" selection-start-column="16" selection-end-line="534" selection-end-column="36" />
-          <folding>
-            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/07_聊天页面.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="63" column="8" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+        <state relative-caret-position="319">
+          <caret line="92" column="5" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="92" selection-end-column="5" />
           <folding>
-            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

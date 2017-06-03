@@ -7,13 +7,16 @@
  */
 function SessionPage(obj) {
     this.url = obj.url ? obj.url : "";
+    this.timer = obj.timer ? obj.timer : null;
+    this.timer = obj.timer ? obj.timer : null;
     this.pageCode = obj.pageCode ? obj.pageCode : 1;
     this.paramsObj = obj.paramsObj ? obj.paramsObj : null;
 
-    this.messageTemplate = {
-        warn: '',
-    };
-    this.init(".fixed").send(".send").historyRecord(this.url, this.paramsObj);
+    this.init(".fixed")
+        .send(".send")
+        .dropDown(".session_box")
+        .historyRecord(this.url, this.paramsObj);
+
 }
 
 /**
@@ -27,7 +30,7 @@ SessionPage.prototype.init = function (element) {
     $("input[name='say']").on("blur", function () {
         $(element).removeClass("absolute");
     });
-    $(".session").on("touchstart", function () {
+    $(".session_box").on("touchstart", function () {
         $("input[name='say']").blur();
     });
     $("input[name='say']").on("focus", function () {
@@ -59,7 +62,7 @@ SessionPage.prototype.send = function (element) {
             msg_id: "22e604c7811c23586355f63f24658530"
         };
         var template = _protoObj_.getTemplate(paramsObj);
-        $(".session").append(template);
+        $(".session_content").append(template);
         tempObj.val("");
         tempObj.focus();
         var frontHeight = $(element).outerHeight();
@@ -91,12 +94,26 @@ SessionPage.prototype.getTemplate = function (obj) {
 
 /**
  *
- * @param info
- * @returns {string}
+ * @param paramsObj
+ * @param type
+ * @param message
+ * @returns {SessionPage}
  */
-SessionPage.prototype.getMessageTemplate = function (info) {
-    var template = '<li class="line"><div class="message"><p>' + info + '</p></div></li>';
-    return this.messageTemplate['warn'] = template;
+SessionPage.prototype.showStatus = function (paramsObj, type, message) {
+    var messageTemplate = "";
+    var tempObj = $("#" + paramsObj['msg_id']);
+    if ("information" == type) {
+
+    } else if ("warning" == type) {
+        messageTemplate = '<li class="line"><div class="message"><p>' + message + '</p></div></li>';
+        tempObj.addClass("fail");
+        tempObj.after(messageTemplate);
+    } else if ("error" == type) {
+
+    } else if ("question" == type) {
+
+    }
+    return this;
 }
 /**
  * BEGIN 设置字体大小
@@ -112,14 +129,18 @@ SessionPage.prototype.historyRecord = function (url, paramsObj) {
         data: paramsObj,
         dataType: "text",
         success: function (data) {
-            _protoObj_.pageCode++;
             data = JSON.parse(data);
-            for (var i = 0; i < data.length; i++) {
-                $(".load_more").after(_protoObj_.getTemplate(data[i]));
+            if (data.length > 0) {
+                _protoObj_.pageCode++;
+                for (var i = 0; i < data.length; i++) {
+                    $("#load_more").after(_protoObj_.getTemplate(data[i]));
+                }
+            } else {
+                $("#load_more").html("全部加载完毕！");
             }
         },
         error: function (msg) {
-
+            $("#load_more").html("服务器连接异常，请检查您的网络或联系管理员!");
         }
     });
     return this;
@@ -133,57 +154,42 @@ SessionPage.prototype.historyRecord = function (url, paramsObj) {
  */
 SessionPage.prototype.addMessage = function (url, paramsObj) {
     var _protoObj_ = this;
-    var tempObj = $("#" + paramsObj['msg_id']);
     $.ajax({
         url: url,
         type: "POST",
         data: paramsObj,
         dataType: "text",
         success: function (data) {
-            console.log(data);
+            //console.log(data);
         },
         error: function (msg) {
-            tempObj.addClass("fail");
-            tempObj.after(_protoObj_.getMessageTemplate("服务器连接异常，请检查您的网络或联系管理员!"));
+            _protoObj_.showStatus(paramsObj, "warning", "服务器连接异常，请检查您的网络或联系管理员!");
         }
     });
     return this;
 }
 
-// SessionPage.prototype.dropDown = function (element) {
-//     var _protoObj_ = this;
-//     var pageCode = this.pageCode;
-//     var url = "http://gl.2ma2.com/ashx/IMAjax.ashx";
-//     $(window).on("scroll", function (ev) {
-//         // _protoObj_.historyRecord(url, {
-//         //     page: pageCode,
-//         //     method: "get_msg",
-//         //     user_id: "11_803",
-//         //     data_id: 353,
-//         //     customer_tel: localStorage.getItem("phone")
-//         // });
-//     });
-//     _protoObj_.initX = 0;
-//     _protoObj_.initY = 0;
-//     $(document).on("touchstart", function (ev) {
-//         ev = event || window.event;
-//         var touch = ev.touches[0];
-//         _protoObj_.initX = touch.pageX;
-//         _protoObj_.initY = touch.pageY;
-//         document.title = touch.pageX + "==" + touch.pageY;
-//     });
-//     $(document).on("touchmove", function (ev) {
-//         ev = event || window.event;
-//         var touch = ev.touches[0];
-//         $(".session").attr("style", "transform:translateY(" + (touch.pageY - _protoObj_.initY) + "px)");
-//         document.title = touch.pageX + "==" + touch.pageY;
-//     });
-//     $(document).on("touchend", function (ev) {
-//         ev = event || window.event;
-//         var touch = ev.changedTouches[0];
-//         $(".session").attr("style", "transform:translateY(0px);transition:all 300ms ease-out;");
-//         document.title = touch.pageX + "==" + touch.pageY;
-//     });
-//     return this;
-// }
-
+/**
+ *
+ * @param element
+ * @returns {SessionPage}
+ */
+SessionPage.prototype.dropDown = function (element) {
+    var _protoObj_ = this;
+    $(window).on("scroll", function () {
+        var fontSize = parseFloat($("html").css("fontSize"));
+        if ($(this).scrollTop() <= 0.48 * fontSize) {
+            if (_protoObj_.timer) clearInterval(_protoObj_.timer);
+            _protoObj_.timer = setTimeout(function () {
+                _protoObj_.historyRecord(_protoObj_.url, {
+                    page: _protoObj_.pageCode,
+                    method: "get_msg",
+                    user_id: "11_803",
+                    data_id: 353,
+                    customer_tel: localStorage.getItem("phone")
+                });
+            }, 500);
+        }
+    });
+    return this;
+}
