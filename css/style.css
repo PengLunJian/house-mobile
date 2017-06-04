@@ -2587,30 +2587,18 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     float: right;
 }
 
-.chat_page li.line {
+.chat_page li.error .msg {
+    display: block;
     color: #ffffff;
     font-size: 0.13rem;
-    padding: 0.08rem 0.3rem;
-}
-
-.chat_page li.line .message {
-    line-height: 0.18rem;
     text-align: justify;
-    padding: 0.06rem 0.1rem;
+    line-height: 0.18rem;
     background-color: #cfcfcf;
     -webkit-border-radius: 0.06rem;
     -moz-border-radius: 0.06rem;
     border-radius: 0.06rem;
-}
-
-.chat_page li.line p,
-.chat_page li.line a {
-    display: inline;
-}
-
-.chat_page li.line a {
-    color: #417de6;
-    display: inline;
+    padding: 0.08rem 0.16rem;
+    margin: 0.16rem 0.2rem 0rem;
 }
 
 .chat_page li .info p {
@@ -2656,7 +2644,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     transform: rotate(135deg);
 }
 
-.chat_page li.fail .info p:after {
+.chat_page li.error .info p:after {
     content: '!';
     display: block;
     position: absolute;
@@ -2678,11 +2666,11 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
 }
 
-.chat_page li.left.fail .info p:after {
+.chat_page li.left.error .info p:after {
     right: -0.24rem;
 }
 
-.chat_page li.right.fail .info p:after {
+.chat_page li.right.error .info p:after {
     left: -0.3rem;
 }
 
