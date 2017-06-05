@@ -489,4 +489,28 @@ new HtmlFontSize({
     element: "html"
 });
 
+/**
+ * BEGIN 调用设置字体大小
+ * Author:PengLunJian
+ * Date:2017-06-05
+ * @param ev
+ * @constructor 构造函数
+ */
+function Touch(ev) {
+    return this.getTouch(ev);
+}
+/**
+ * BEGIN 调用设置字体大小
+ * Author:PengLunJian
+ * Date:2017-06-05
+ * @param ev
+ * @returns {*}
+ */
+Touch.prototype.getTouch = function (ev) {
+    ev = event || window.event;
+    ev.stopPropagation();
+    var touch = ev.touches[0] || ev.changedTouches[0]||ev.targetTouches[0];
+    return touch;
+}
+
 

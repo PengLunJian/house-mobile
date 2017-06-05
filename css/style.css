@@ -2667,7 +2667,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 }
 
 .chat_page li.left.error .info p:after {
-    right: -0.24rem;
+    right: -0.3rem;
 }
 
 .chat_page li.right.error .info p:after {
@@ -2726,9 +2726,12 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 }
 
 .chat_page #load_more {
+    position: absolute;
+    left: 0px;
     width: 100%;
-    overflow: hidden;
+    top: -0.48rem;
     color: #999999;
+    overflow: hidden;
     font-size: 0.14rem;
     text-align: center;
     line-height: 0.24rem;

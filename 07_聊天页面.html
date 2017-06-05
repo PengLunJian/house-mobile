@@ -35,17 +35,7 @@
 <!--<script src="plugins/IM.API/NIM_Web_SDK_v3.6.0.js" type="text/javascript"></script>-->
 <script src="js/session.page.js" type="text/javascript"></script>
 <script type="text/javascript">
-    var sp = new SessionPage({
-        pageCode: this.pageCode,
-        url: "http://gl.2ma2.com/ashx/IMAjax.ashx",
-        paramsObj: {
-            page: 1,
-            method: "get_msg",
-            user_id: "11_803",
-            data_id: 353,
-            customer_tel: localStorage.getItem("phone")
-        }
-    });
+    var sp = new SessionPage({});
     var data = {};
     var nim = NIM.getInstance({
         appKey: '54ca06c2b88aa7bf9616fde04c623383',
@@ -313,11 +303,6 @@
 //        console.log('离线消息', obj);
         pushMsg(obj.msgs);
     }
-    function onMsg(msg) {
-        console.log('收到消息', msg.scene, msg.type, msg);
-        pushMsg(msg);
-        sp.pullMsg(msg);
-    }
     function pushMsg(msgs) {
         if (!Array.isArray(msgs)) {
             msgs = [msgs];
@@ -362,21 +347,34 @@
     }
     function onSyncDone() {
 //        console.log('同步完成');
-        console.log(sp.getParamsObj({
-            method: "get_msg"
-        }));
         sp.historyRecord(sp.getParamsObj({
             method: "get_msg"
         }));
-
     }
 
-    function sendMsgDone(error, msg) {
-        console.log(error);
-        console.log(msg);
-        console.log('发送' + msg.scene + ' ' + msg.type + '消息' + (!error ? '成功' : '失败') + ', id=' + msg.idClient);
+
+    /**
+     * 收到消息
+     * @param msg
+     */
+    function onMsg(msg) {
         pushMsg(msg);
-        sp.showStatus(error, msg);
+        var paramsObj = sp.getParamsObj(msg);
+        paramsObj['from_user'] = "11_803";
+        paramsObj['to_user'] = "15900912480";
+        sp.pullMsg(paramsObj);
+    }
+    /**
+     * 发送消息
+     * @param error
+     * @param msg
+     */
+    function sendMsgDone(error, msg) {
+        pushMsg(msg);
+        var paramsObj = sp.getParamsObj(msg);
+        sp.pushMsg(paramsObj);
+        sp.addMessage(paramsObj);
+        console.log(msg['flow']);
     }
 </script>
 </body>
