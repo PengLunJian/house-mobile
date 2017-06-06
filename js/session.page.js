@@ -7,12 +7,16 @@ function SessionPage(obj) {
     this.initX = obj.initX ? obj.initX : 0;
     this.initY = obj.initY ? obj.initY : 0;
     this.timer = obj.timer ? obj.timer : null;
+    this.timeOut = obj.timeOut ? obj.timeOut : 0;
     this.page_code = obj.page_code ? obj.page_code : 1;
     this.oInput = obj.oInput ? obj.oInput : $("input[name='say']");
     this.url = obj.url ? obj.url : "http://gl.2ma2.com/ashx/IMAjax.ashx";
 
-    this.init(".fixed").sendMsg(".send").dropDown().DropDownAnimation(".session_content");
+    this.init(".fixed").dropDown().sendMsg(".send").DropDownAnimation(".session_content");
 
+    this.timeOutOpera = setTimeout(function () {
+        obj.timeOutOpera();
+    }, this.timeOut * 60 * 1000);
 }
 /**
  *
@@ -42,7 +46,7 @@ SessionPage.prototype.sendMsg = function (element) {
     $(element).on("click", function () {
         var msg = nim.sendText({
             scene: 'p2p',
-            to: '11_710',
+            to: localStorage.getItem("toUser"),
             text: _protoObj_.oInput.val(),
             done: sendMsgDone
         });
@@ -71,7 +75,7 @@ SessionPage.prototype.pushMsg = function (paramsObj) {
     this.oInput.val("");
     this.oInput.focus();
     this.moveBottom();
-    this.addMessage(paramsObj);
+    this.saveMsg(paramsObj);
     return this;
 }
 /**
@@ -79,8 +83,8 @@ SessionPage.prototype.pushMsg = function (paramsObj) {
  * @param paramsObj
  * @returns {SessionPage}
  */
-SessionPage.prototype.showStatus = function (paramsObj) {
-    var tempObj = $("#" + paramsObj['msg_id']);
+SessionPage.prototype.showMsgStatus = function (paramsObj) {
+    var tempObj = $("#" + paramsObj['idClient']);
     tempObj.addClass("error");
     tempObj.find(".msg").html(paramsObj['statusMsg']);
     return this;
@@ -122,23 +126,28 @@ SessionPage.prototype.historyRecord = function (paramsObj) {
  * @param paramsObj
  * @returns {SessionPage}
  */
-SessionPage.prototype.addMessage = function (paramsObj) {
-    paramsObj['method'] = "add_msg";
+SessionPage.prototype.saveMsg = function (paramsObj) {
     var _protoObj_ = this;
-    $.ajax({
-        url: _protoObj_.url,
-        type: "POST",
-        data: paramsObj,
-        dataType: "text",
-        success: function (data) {
-            console.log("添加成功！");
-        },
-        error: function (msg) {
-            console.log("添加失败！");
-            paramsObj['statusMsg'] = "服务器连接异常，请检查您的网络或联系管理员!";
-            _protoObj_.showStatus(paramsObj);
-        }
-    });
+    paramsObj['method'] = "add_msg";
+    if ("success" == paramsObj['status']) {
+        $.ajax({
+            url: _protoObj_.url,
+            type: "POST",
+            data: paramsObj,
+            dataType: "text",
+            success: function (data) {
+                console.log("添加成功！");
+            },
+            error: function (msg) {
+                console.log("添加失败！");
+                paramsObj['statusMsg'] = "服务器连接异常，请检查您的网络或联系管理员!";
+                _protoObj_.showMsgStatus(paramsObj);
+            }
+        });
+    } else {
+        paramsObj['statusMsg'] = "服务器连接异常，请检查您的网络或联系管理员!";
+        _protoObj_.showMsgStatus(paramsObj);
+    }
     return this;
 }
 /**
@@ -168,7 +177,7 @@ SessionPage.prototype.pullMsg = function (paramsObj) {
     var template = this.getTemplate(paramsObj);
     $(".session_content").append(template);
     this.moveBottom();
-    this.addMessage(paramsObj);
+    this.saveMsg(paramsObj);
     return this;
 }
 /**

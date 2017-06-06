@@ -19,11 +19,15 @@ $(function () {
         ]
     }).setLocalStorage("");
 
+    var oLazy = new Lazyload({
+        loadImgLength: 5
+    });
+
     $(".icon-message").on("click", function () {
         var url = "http://gl.2ma2.com/ashx/IMAjax.ashx";
         var paramsObj = {
             method: "sel_tel",
-            userid: "osZl4jjpN6OO58xgTZSUgxlUpRYb"//$("#user_id").val()
+            userid: "osZl4jjpN6OO58xgTZSUgxlUpRYb"
         };
         modalBox.isChecked(url, paramsObj);
     });

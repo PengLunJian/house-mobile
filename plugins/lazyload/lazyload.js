@@ -1,73 +1,47 @@
 /**
- * Created by Administrator on 2016/12/21.
+ * BEGIN 延时加载插件
+ * Author:PengLunJian
+ * Date:2017-06-06
+ * @param obj 初始化对象形参
+ * @constructor 构造函数
  */
-/*
- * BEGIN
- * 编写通用延时加载功能
- * Author:PENGLUNJIAN
- * Date:2016-12-21
+function Lazyload(obj) {
+    this.timer = obj.timer ? obj.timer : null;
+    this.loadImg = obj.loadImg ? obj.loadImg : "images/loading.png";
+    this.loadImgLength = obj.loadImgLength ? obj.loadImgLength : 5;
+    this.element = obj.element ? obj.element : "img[src='" + this.loadImg + "']";
+
+    this.loading();
+}
+/**
+ * BEGIN 加载方法
+ * Author:PengLunJian
+ * Date:2017-06-06
+ * @returns {Lazyload}
  */
-
-//延时加载方式一 Method One
-(function lazyLoad() {
-    var timer = null;
-
-    function lazyLoad(index) {
-        if (timer) clearInterval(timer);
-        timer = setTimeout(function () {
-            var iHeight = $(window).height();
-            var $obj = $("img[data-loaded='false']:eq(" + index + ")");
-            if ($obj[0]) {
-                var offsetTop = $obj.parent().offset().top;
-                var scrollTop = $(document).scrollTop();
-                if (offsetTop - scrollTop <= iHeight) {
-                    $obj.attr("data-loaded", "true");
-                    var tempImg = new Image();
-                    tempImg.src = $obj.attr("data-original");
-                    $(tempImg).load(function () {
-                        $obj.css("opacity", 0);
-                        $obj.attr("src", $obj.attr("data-original"));
-                        $obj.animate({"opacity": 1}, 300);
-                        lazyLoad(index);
-                    })
-                }
+Lazyload.prototype.loading = function () {
+    var _protoObj_ = this;
+    this.timer = setInterval(function () {
+        $(_protoObj_.element).each(function () {
+            var _this = this;
+            this.iWidth = $(window).outerWidth();
+            this.iHeight = $(window).outerHeight();
+            this.dataLoaded = "false" == $(this).attr("data-loaded");
+            this.iTop = $(this).offset().top - $(window).scrollTop();
+            this.iLeft = $(this).offset().left - $(window).scrollLeft();
+            this.offsetYIN = (this.iTop >= 0 && this.iTop <= this.iHeight);
+            this.offsetXIN = (this.iLeft >= 0 && this.iLeft <= this.iWidth);
+            if (this.offsetXIN && this.offsetYIN && this.dataLoaded) {
+                this.tempImgObj = new Image();
+                this.tempImgObj.src = $(this).attr("data-original");
+                $(this.tempImgObj).on("load", function () {
+                    $(_this).attr("data-loaded", "true");
+                    $(_this).css("opacity", 0);
+                    $(_this).attr("src", _this.tempImgObj.src);
+                    $(_this).animate({"opacity": 1}, 300);
+                });
             }
-        }, 100);
-    }
-
-    $(function () {
-        lazyLoad(0);
-        $(window).scroll(function () {
-            lazyLoad(0);
-        })
-    });
-})()
-
-//延时加载方式二 Method Second
-
-// function lazyLoad() {
-//     timer = setTimeout(function () {
-//         var iHeight = $(window).height();
-//         $("img[data-loaded='false']").each(function () {
-//             var $_obj = $(this);
-//             var offsetTop = $_obj.parent().offset().top;
-//             var scrollTop = $(document).scrollTop();
-//             if (offsetTop - scrollTop <= iHeight) {
-//                 $_obj.attr("data-loaded", "true");
-//                 var tempImg = new Image();
-//                 tempImg.src = $_obj.attr("data-original");
-//                 $(tempImg).load(function () {
-//                     $_obj.css("opacity", 0);
-//                     $_obj.attr("src", $_obj.attr("data-original"));
-//                     $_obj.animate({"opacity": 1}, 300);
-//                 })
-//             }
-//         });
-//     }, 100);
-// }
-// $(function () {
-//     lazyLoad();
-//     $(window).scroll(function () {
-//         lazyLoad();
-//     })
-// });
+        });
+    }, 100);
+    return _protoObj_;
+}

@@ -542,7 +542,11 @@
                 $(tag).addClass("hide");
             });
         })(jQuery, ".modal_btn", ".modal_city");
-    })
+
+        var oLazy = new Lazyload({
+            loadImgLength: 5
+        });
+    });
 </script>
 </body>
 </html>

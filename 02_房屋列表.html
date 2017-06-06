@@ -877,7 +877,6 @@
 <script src="plugins/lazyload/lazyload.js"></script>
 <script type="text/javascript">
     $(function () {
-
         (function listPageJS() {
             $(".nav_btn").on("click", function () {
                 $(".modal_nav").removeClass("hide");
@@ -1015,6 +1014,10 @@
             var highlightMin = 0, highlightMax = 1000;
             $('.nstSlider').nstSlider('highlight_range', highlightMin, highlightMax);
         })();
+
+        var oLazy = new Lazyload({
+            loadImgLength: 5
+        });
     })
 </script>
 </body>

@@ -465,7 +465,7 @@ ModalBox.prototype.setLocalStorage = function (url) {
         }
     })
     localStorage.setItem("dataId", "353");
-    localStorage.setItem("toUser", "11_803");
+    localStorage.setItem("toUser", "11_710");
     localStorage.setItem("account", "11_675");
     localStorage.setItem("phone", "15900912480");
     localStorage.setItem("fromUser", "15900912480");
