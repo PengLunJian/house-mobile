@@ -65,7 +65,6 @@ body {
     top: 0px;
     left: 0px;
     width: 100%;
-    display: flex;
     height: 100% !important;
     overflow: hidden !important;
 }
@@ -2579,11 +2578,11 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .15);
 }
 
-.chat_page .left .image {
+.chat_page .in .image {
     float: left;
 }
 
-.chat_page .right .image {
+.chat_page .out .image {
     float: right;
 }
 
@@ -2603,13 +2602,13 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 
 .chat_page li .info p {
     max-width: 100%;
-    padding: 0.08rem;
     position: relative;
     min-height: 0.42rem;
     text-align: left;
     line-height: 0.16rem;
     display: inline-block;
     border-radius: 0.06rem;
+    padding: 0.12rem 0.1rem;
     background-color: #ffffff;
     border: 1px solid #83b8ff;
 }
@@ -2618,15 +2617,15 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     content: '';
     display: block;
     position: absolute;
+    top: 0.14rem;
     width: 0.1rem;
     height: 0.1rem;
-    top: 0.15rem;
     background-color: #ffffff;
     border-top: 1px solid #83b8ff;
     border-left: 1px solid #83b8ff;
 }
 
-.chat_page li.left .info p:before {
+.chat_page li.in .info p:before {
     left: -0.06rem;
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
@@ -2635,7 +2634,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     transform: rotate(-45deg);
 }
 
-.chat_page li.right .info p:before {
+.chat_page li.out .info p:before {
     right: -0.06rem;
     -webkit-transform: rotate(135deg);
     -moz-transform: rotate(135deg);
@@ -2666,20 +2665,20 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
 }
 
-.chat_page li.left.error .info p:after {
+.chat_page li.in.error .info p:after {
     right: -0.3rem;
 }
 
-.chat_page li.right.error .info p:after {
+.chat_page li.out.error .info p:after {
     left: -0.3rem;
 }
 
-.chat_page .left .info {
+.chat_page .in .info {
     padding-left: 0.58rem;
     padding-right: 0.42rem;
 }
 
-.chat_page .right .info {
+.chat_page .out .info {
     text-align: right;
     padding-left: 0.42rem;
     padding-right: 0.58rem;

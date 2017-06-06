@@ -443,6 +443,39 @@ ModalBox.prototype.isChecked = function (url, paramsObj) {
     });
     return this;
 }
+
+/**
+ * BEGIN 设置本地存储数据
+ * Author:PengLunJian
+ * Date:2017-06-06
+ * @param url 接口访问路径
+ * @returns {ModalBox} 返回当前对象实现连缀调用
+ */
+ModalBox.prototype.setLocalStorage = function (url) {
+    $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "JSON",
+        data: {},
+        success: function (data) {
+
+        },
+        error: function (msg) {
+
+        }
+    })
+    localStorage.setItem("dataId", "353");
+    localStorage.setItem("toUser", "11_803");
+    localStorage.setItem("account", "11_675");
+    localStorage.setItem("phone", "15900912480");
+    localStorage.setItem("fromUser", "15900912480");
+    localStorage.setItem("token", "ff24c71623bc99c3");
+    localStorage.setItem("outImg", "images/user_logo.jpg");
+    localStorage.setItem("inImg", "images/chat_logo.jpg");
+    localStorage.setItem("userId", "osZl4jjpN6OO58xgTZSUgxlUpRYb");
+
+    return this;
+}
 /**
  * BEGIN 设置字体大小
  * Author:PengLunJian
@@ -509,7 +542,7 @@ function Touch(ev) {
 Touch.prototype.getTouch = function (ev) {
     ev = event || window.event;
     ev.stopPropagation();
-    var touch = ev.touches[0] || ev.changedTouches[0]||ev.targetTouches[0];
+    var touch = ev.touches[0] || ev.changedTouches[0] || ev.targetTouches[0];
     return touch;
 }
 

@@ -39,8 +39,8 @@
     var data = {};
     var nim = NIM.getInstance({
         appKey: '54ca06c2b88aa7bf9616fde04c623383',
-        account: '11_675',
-        token: 'ff24c71623bc99c3',
+        account: localStorage.getItem("account"),
+        token: localStorage.getItem("token"),
         onconnect: onConnect,
         onerror: onError,
         onwillreconnect: onWillReconnect,
@@ -345,11 +345,11 @@
     function onCustomSysMsg(sysMsg) {
 //        console.log('收到自定义系统通知', sysMsg);
     }
+
     function onSyncDone() {
 //        console.log('同步完成');
-        sp.historyRecord(sp.getParamsObj({
-            method: "get_msg"
-        }));
+        var paramsObj = sp.getParamsObj({});
+        sp.historyRecord(paramsObj);
     }
 
 
@@ -360,8 +360,6 @@
     function onMsg(msg) {
         pushMsg(msg);
         var paramsObj = sp.getParamsObj(msg);
-        paramsObj['from_user'] = "11_803";
-        paramsObj['to_user'] = "15900912480";
         sp.pullMsg(paramsObj);
     }
     /**
@@ -373,8 +371,6 @@
         pushMsg(msg);
         var paramsObj = sp.getParamsObj(msg);
         sp.pushMsg(paramsObj);
-        sp.addMessage(paramsObj);
-        console.log(msg['flow']);
     }
 </script>
 </body>

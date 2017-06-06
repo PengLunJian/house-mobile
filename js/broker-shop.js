@@ -17,7 +17,7 @@ $(function () {
             ".modal_code",
             ".modal_success"
         ]
-    });
+    }).setLocalStorage("");
 
     $(".icon-message").on("click", function () {
         var url = "http://gl.2ma2.com/ashx/IMAjax.ashx";

@@ -55,12 +55,9 @@ SessionPage.prototype.sendMsg = function (element) {
  * @returns {string}
  */
 SessionPage.prototype.getTemplate = function (paramsObj) {
-    var position = paramsObj['from_user'].length == 11 ? "right" : "left";
-    var msg = paramsObj['content_txt'] ? paramsObj['content_txt'] : paramsObj['txt'];
-    var msgId = paramsObj['msg_id'] ? paramsObj['msg_id'] : paramsObj['idClient'];
-    var template = '<li id="' + msgId + '" class="' + position + '"><div class="image">'
-        + '<img src="' + paramsObj['userImg'] + '"></div><div class="info">'
-        + '<p>' + msg + '</p></div><p class="msg"></p></li>';
+    var template = '<li id="' + paramsObj['idClient'] + '" class="' + paramsObj['flow'] + '">'
+        + '<div class="image"><img src="' + paramsObj['userImg'] + '"></div><div class="info">'
+        + '<p>' + paramsObj['text'] + '</p></div><p class="msg"></p></li>';
     return template;
 }
 /**
@@ -71,9 +68,10 @@ SessionPage.prototype.getTemplate = function (paramsObj) {
 SessionPage.prototype.pushMsg = function (paramsObj) {
     var template = this.getTemplate(paramsObj);
     $(".session_content").append(template);
-    sp.oInput.val("");
-    sp.oInput.focus();
-    sp.moveBottom();
+    this.oInput.val("");
+    this.oInput.focus();
+    this.moveBottom();
+    this.addMessage(paramsObj);
     return this;
 }
 /**
@@ -95,8 +93,9 @@ SessionPage.prototype.showStatus = function (paramsObj) {
 SessionPage.prototype.historyRecord = function (paramsObj) {
     var template = "";
     var _protoObj_ = this;
+    paramsObj['method'] = "get_msg";
     $.ajax({
-        url: paramsObj.url,
+        url: _protoObj_.url,
         type: "POST",
         data: paramsObj,
         dataType: "text",
@@ -107,7 +106,7 @@ SessionPage.prototype.historyRecord = function (paramsObj) {
                 for (var i = 0; i < data.length; i++) {
                     template += _protoObj_.getTemplate(_protoObj_.getParamsObj(data[i]));
                 }
-                $(".session_content").prepend(template);
+                $("#load_more").after(template);
             } else {
                 $("#load_more").html("全部加载完毕！");
             }
@@ -127,7 +126,7 @@ SessionPage.prototype.addMessage = function (paramsObj) {
     paramsObj['method'] = "add_msg";
     var _protoObj_ = this;
     $.ajax({
-        url: paramsObj.url,
+        url: _protoObj_.url,
         type: "POST",
         data: paramsObj,
         dataType: "text",
@@ -178,19 +177,13 @@ SessionPage.prototype.pullMsg = function (paramsObj) {
  * @returns {*}
  */
 SessionPage.prototype.getParamsObj = function (paramsObj) {
-    paramsObj.method = paramsObj.method ? paramsObj.method : "";
+    paramsObj.tel = paramsObj.tel ? paramsObj.tel : localStorage.getItem("phone");
     paramsObj.page_code = paramsObj.page_code ? paramsObj.page_code : this.page_code;
-    paramsObj.tel = paramsObj.tel ? paramsObj.tel : "15900912480";//localStorage.getItem("phone");
-    paramsObj.content_txt = paramsObj.content_txt ? paramsObj.content_txt : this.oInput.val();
-    paramsObj.content_txt = paramsObj['text'] ? paramsObj['text'] : paramsObj.content_txt;
-    paramsObj.from_user = paramsObj.from_user ? paramsObj.from_user : "15900912480";//localStorage.getItem("phone");
-    paramsObj.to_user = paramsObj.to_user ? paramsObj.to_user : "11_803";//localStorage.getItem("toUser");
-    paramsObj.data_id = paramsObj.data_id ? paramsObj.data_id : "353";//localStorage.getItem("dataId");
-    paramsObj.msg_id = paramsObj.msg_id ? paramsObj.msg_id : paramsObj['idClient'];
-    paramsObj.url = paramsObj.url ? paramsObj.url : this.url;
-    paramsObj.user_id = paramsObj.user_id ? paramsObj.user_id : "11_710";//localStorage.getItem("userId");
-    paramsObj.userImg = paramsObj.userImg ? paramsObj.userImg : "images/chat_logo.jpg";//localStorage.getItem("fromUserImg");
-    paramsObj.statusMsg = paramsObj.statusMsg ? paramsObj.statusMsg : "";
+    paramsObj.data_id = paramsObj.data_id ? paramsObj.data_id : localStorage.getItem("dataId");
+    paramsObj.user_id = paramsObj.user_id ? paramsObj.user_id : localStorage.getItem("userId");
+    paramsObj.userImg = paramsObj.flow == 'in' ? localStorage.getItem("inImg") : localStorage.getItem("outImg");
+    paramsObj.to_user = paramsObj.flow == 'in' ? localStorage.getItem("fromUser") : localStorage.getItem("toUser");
+    paramsObj.from_user = paramsObj.flow == 'in' ? localStorage.getItem("toUser") : localStorage.getItem("fromUser");
 
     return paramsObj;
 }
