@@ -2625,10 +2625,11 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     position: relative;
     min-height: 0.42rem;
     text-align: left;
-    line-height: 0.16rem;
+    font-size: 0.14rem;
+    line-height: 0.18rem;
     display: inline-block;
     border-radius: 0.06rem;
-    padding: 0.12rem 0.1rem;
+    padding: 0.1rem 0.1rem;
     background-color: #ffffff;
     border: 1px solid #83b8ff;
 }

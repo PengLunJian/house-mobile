@@ -7,16 +7,13 @@ function SessionPage(obj) {
     this.initX = obj.initX ? obj.initX : 0;
     this.initY = obj.initY ? obj.initY : 0;
     this.timer = obj.timer ? obj.timer : null;
-    this.timeOut = obj.timeOut ? obj.timeOut : 0;
+    this.overTime = obj.overTime ? obj.overTime : 0;
     this.page_code = obj.page_code ? obj.page_code : 1;
     this.oInput = obj.oInput ? obj.oInput : $("input[name='say']");
     this.url = obj.url ? obj.url : "http://gl.2ma2.com/ashx/IMAjax.ashx";
 
-    this.init(".fixed").dropDown().sendMsg(".send").DropDownAnimation(".session_content");
-
-    this.timeOutOpera = setTimeout(function () {
-        obj.timeOutOpera();
-    }, this.timeOut * 60 * 1000);
+    this.overTimeOpera = this.returnTimer(obj);
+    this.init(".fixed").dropDown().sendMsg(".send").DropDownAnimation(document, obj);
 }
 /**
  *
@@ -35,6 +32,18 @@ SessionPage.prototype.init = function (element) {
         $(element).addClass("absolute");
     });
     return this;
+}
+/**
+ *
+ * @param obj
+ * @returns {number}
+ */
+SessionPage.prototype.returnTimer = function (obj) {
+    var _protoObj_ = this;
+    var timer = setTimeout(function () {
+        obj.overTimeOpera();
+    }, _protoObj_.overTime * 60 * 1000);
+    return timer;
 }
 /**
  *
@@ -237,12 +246,14 @@ SessionPage.prototype.setTransform = function (element, value) {
  * @returns {SessionPage}
  * @constructor
  */
-SessionPage.prototype.DropDownAnimation = function (element) {
+SessionPage.prototype.DropDownAnimation = function (element, obj) {
     var _protoObj_ = this;
     $(element).on("touchstart", function (ev) {
         var touch = new Touch(ev);
         _protoObj_.initX = touch.pageX;
         _protoObj_.initY = touch.pageY;
+        clearInterval(_protoObj_.overTimeOpera);
+        _protoObj_.overTimeOpera = _protoObj_.returnTimer(obj);
     });
 
     $(element).on("touchmove", function (ev) {

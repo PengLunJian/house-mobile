@@ -170,7 +170,7 @@ function ModalBox(obj) {
     this.elementBtnConfirm = obj.elementBtnConfirm ? obj.elementBtnConfirm : ".btn.confirm";
 
     this.oTime = null, this.phone = null, this.code = null;
-    this.closeModal().prevModal().nextModal().checkCode();
+    this.closeModal().prevModal().nextModal().checkCode().setLocalStorage("");
 }
 /**
  * BEGIN 重置模态框状态
@@ -413,7 +413,6 @@ ModalBox.prototype.checkCode = function () {
     });
     return this;
 }
-
 /**
  * BEGIN 判断用户是否认证
  * Author:PengLunJian
@@ -422,10 +421,10 @@ ModalBox.prototype.checkCode = function () {
  * @param paramsObj 对象形参
  * @returns {ModalBox} 返回当前对象实现连缀调用
  */
-ModalBox.prototype.isChecked = function (url, paramsObj) {
+ModalBox.prototype.isChecked = function (paramsObj) {
     var _protoObj_ = this;
     $.ajax({
-        url: url,
+        url: paramsObj['url'],
         type: "POST",
         data: paramsObj,
         dataType: "JSON",
@@ -517,11 +516,6 @@ HtmlFontSize.prototype.runSetFontSize = function () {
     });
     return this;
 }
-
-new HtmlFontSize({
-    element: "html"
-});
-
 /**
  * BEGIN 调用设置字体大小
  * Author:PengLunJian
@@ -545,5 +539,58 @@ Touch.prototype.getTouch = function (ev) {
     var touch = ev.touches[0] || ev.changedTouches[0] || ev.targetTouches[0];
     return touch;
 }
+/**
+ * BEGIN 延时加载插件
+ * Author:PengLunJian
+ * Date:2017-06-06
+ * @param obj 初始化对象形参
+ * @constructor 构造函数
+ */
+function Lazyload(obj) {
+    this.timer = obj.timer ? obj.timer : null;
+    this.loadImg = obj.loadImg ? obj.loadImg : "images/loading.png";
+    this.loadImgCount = obj.loadImgCount ? obj.loadImgCount : 5;
+    this.element = obj.element ? obj.element : "img[src='" + this.loadImg + "']";
 
+    this.loading();
+}
+/**
+ * BEGIN 加载方法
+ * Author:PengLunJian
+ * Date:2017-06-06
+ * @returns {Lazyload}
+ */
+Lazyload.prototype.loading = function () {
+    var _protoObj_ = this;
+    this.timer = setInterval(function () {
+        $(_protoObj_.element).each(function () {
+            var _this = this;
+            this.iWidth = $(window).outerWidth();
+            this.iHeight = $(window).outerHeight();
+            this.dataLoaded = "false" == $(this).attr("data-loaded");
+            this.iTop = $(this).offset().top - $(window).scrollTop();
+            this.iLeft = $(this).offset().left - $(window).scrollLeft();
+            this.offsetYIN = (this.iTop >= 0 && this.iTop <= this.iHeight);
+            this.offsetXIN = (this.iLeft >= 0 && this.iLeft <= this.iWidth);
+            if (this.offsetXIN && this.offsetYIN && this.dataLoaded) {
+                this.tempImgObj = new Image();
+                this.tempImgObj.src = $(this).attr("data-original");
+                $(this.tempImgObj).on("load", function () {
+                    $(_this).attr("data-loaded", "true");
+                    $(_this).css("opacity", 0);
+                    $(_this).attr("src", _this.tempImgObj.src);
+                    $(_this).animate({"opacity": 1}, 300);
+                });
+            }
+        });
+    }, 100);
+    return _protoObj_;
+}
 
+new HtmlFontSize({
+    element: "html"
+});
+
+new Lazyload({
+    loadImgCount: 5
+})
