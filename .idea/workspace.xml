@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31b01e75-2bd2-429d-ac26-aeb2447c75fb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/02_房屋列表.html" afterPath="$PROJECT_DIR$/02_房屋列表.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/03_房屋详情.html" afterPath="$PROJECT_DIR$/03_房屋详情.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/05_经纪人微店.html" afterPath="$PROJECT_DIR$/05_经纪人微店.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/07_聊天页面.html" afterPath="$PROJECT_DIR$/07_聊天页面.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/UI.js" afterPath="$PROJECT_DIR$/js/UI.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/session.page.js" afterPath="$PROJECT_DIR$/js/session.page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/shop.page.js" afterPath="$PROJECT_DIR$/js/shop.page.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,16 +20,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="session.page.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="session.page.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/session.page.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
+            <state relative-caret-position="-1747">
               <caret line="66" column="33" lean-forward="false" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="33" />
               <folding>
                 <element signature="n#!!block;n#SessionPage#0" expanded="false" />
                 <element signature="e#653#998#0" expanded="false" />
                 <element signature="e#1093#1252#0" expanded="false" />
                 <element signature="e#1359#1647#0" expanded="false" />
+                <element signature="e#1757#2048#0" expanded="false" />
                 <element signature="e#2159#2393#0" expanded="false" />
                 <element signature="e#2510#2666#0" expanded="false" />
                 <element signature="e#2783#3578#0" expanded="false" />
@@ -47,6 +42,55 @@
                 <element signature="e#6535#7167#0" expanded="false" />
                 <element signature="e#7319#8258#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UI.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/UI.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3960">
+              <caret line="209" column="18" lean-forward="true" selection-start-line="209" selection-start-column="18" selection-end-line="209" selection-end-column="18" />
+              <folding>
+                <element signature="n#!!block;n#MoveBar#0" expanded="false" />
+                <element signature="e#410#995#0" expanded="false" />
+                <element signature="e#1147#1484#0" expanded="false" />
+                <element signature="n#!!block;n#LimitFontSize#0" expanded="false" />
+                <element signature="e#2276#2871#0" expanded="false" />
+                <element signature="n#!!block;n#TimeCountDown#0" expanded="false" />
+                <element signature="e#3331#3765#0" expanded="false" />
+                <element signature="e#3920#4112#0" expanded="false" />
+                <element signature="e#4297#4530#0" expanded="false" />
+                <element signature="n#!!block;n#ModalBox#0" expanded="false" />
+                <element signature="e#5577#5896#0" expanded="false" />
+                <element signature="e#6039#6227#0" expanded="false" />
+                <element signature="e#6370#6623#0" expanded="false" />
+                <element signature="e#6772#7024#0" expanded="false" />
+                <element signature="e#7172#8123#0" expanded="false" />
+                <element signature="e#8313#8683#0" expanded="false" />
+                <element signature="e#8876#9490#0" expanded="false" />
+                <element signature="e#9638#11964#0" expanded="false" />
+                <element signature="e#12108#13613#0" expanded="false" />
+                <element signature="e#13815#14283#0" expanded="false" />
+                <element signature="e#14461#15157#0" expanded="false" />
+                <element signature="n#!!block;n#HtmlFontSize#0" expanded="false" />
+                <element signature="e#15540#15657#0" expanded="false" />
+                <element signature="e#15817#16130#0" expanded="false" />
+                <element signature="n#!!block;n#Touch#0" expanded="false" />
+                <element signature="e#16422#16579#0" expanded="false" />
+                <element signature="n#!!block;n#Lazyload#0" expanded="false" />
+                <element signature="e#17126#18304#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shop.page.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/shop.page.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -176,7 +220,6 @@
         <option value="$PROJECT_DIR$/08_demo.html" />
         <option value="$PROJECT_DIR$/plugins/lazyload/lazyload.js" />
         <option value="$PROJECT_DIR$/js/broker-shop.js" />
-        <option value="$PROJECT_DIR$/js/shop.page.js" />
         <option value="$PROJECT_DIR$/01_房屋首页.html" />
         <option value="$PROJECT_DIR$/04_房产详情_出租.html" />
         <option value="$PROJECT_DIR$/06_微店管理_推广编辑.html" />
@@ -189,6 +232,7 @@
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/02_房屋列表.html" />
         <option value="$PROJECT_DIR$/07_聊天页面.html" />
+        <option value="$PROJECT_DIR$/js/shop.page.js" />
       </list>
     </option>
   </component>
@@ -241,7 +285,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -418,12 +462,12 @@
       <workItem from="1496453013609" duration="19493000" />
       <workItem from="1496502283772" duration="32539000" />
       <workItem from="1496710783167" duration="32106000" />
-      <workItem from="1496798073678" duration="18709000" />
+      <workItem from="1496798073678" duration="19242000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="512581000" />
+    <option name="totallyTimeSpent" value="513114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -677,14 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/shop.page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="25" column="48" lean-forward="true" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugins/lazyload/lazyload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -789,43 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/UI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1584">
-          <caret line="209" column="18" lean-forward="true" selection-start-line="209" selection-start-column="18" selection-end-line="209" selection-end-column="18" />
-          <folding>
-            <element signature="n#!!block;n#MoveBar#0" expanded="false" />
-            <element signature="e#410#995#0" expanded="false" />
-            <element signature="e#1147#1484#0" expanded="false" />
-            <element signature="n#!!block;n#LimitFontSize#0" expanded="false" />
-            <element signature="e#2276#2871#0" expanded="false" />
-            <element signature="n#!!block;n#TimeCountDown#0" expanded="false" />
-            <element signature="e#3331#3765#0" expanded="false" />
-            <element signature="e#3920#4112#0" expanded="false" />
-            <element signature="e#4297#4530#0" expanded="false" />
-            <element signature="n#!!block;n#ModalBox#0" expanded="false" />
-            <element signature="e#5577#5896#0" expanded="false" />
-            <element signature="e#6039#6227#0" expanded="false" />
-            <element signature="e#6370#6623#0" expanded="false" />
-            <element signature="e#6772#7024#0" expanded="false" />
-            <element signature="e#7172#8123#0" expanded="false" />
-            <element signature="e#8313#8683#0" expanded="false" />
-            <element signature="e#8876#9490#0" expanded="false" />
-            <element signature="e#9638#11964#0" expanded="false" />
-            <element signature="e#12108#13613#0" expanded="false" />
-            <element signature="e#13815#14283#0" expanded="false" />
-            <element signature="e#14461#15157#0" expanded="false" />
-            <element signature="n#!!block;n#HtmlFontSize#0" expanded="false" />
-            <element signature="e#15540#15657#0" expanded="false" />
-            <element signature="e#15817#16130#0" expanded="false" />
-            <element signature="n#!!block;n#Touch#0" expanded="false" />
-            <element signature="e#16422#16579#0" expanded="false" />
-            <element signature="n#!!block;n#Lazyload#0" expanded="false" />
-            <element signature="e#17126#18304#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/02_房屋列表.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -897,13 +896,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/session.page.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
+        <state relative-caret-position="-1747">
           <caret line="66" column="33" lean-forward="false" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="33" />
           <folding>
             <element signature="n#!!block;n#SessionPage#0" expanded="false" />
             <element signature="e#653#998#0" expanded="false" />
             <element signature="e#1093#1252#0" expanded="false" />
             <element signature="e#1359#1647#0" expanded="false" />
+            <element signature="e#1757#2048#0" expanded="false" />
             <element signature="e#2159#2393#0" expanded="false" />
             <element signature="e#2510#2666#0" expanded="false" />
             <element signature="e#2783#3578#0" expanded="false" />
@@ -915,6 +915,51 @@
             <element signature="e#6535#7167#0" expanded="false" />
             <element signature="e#7319#8258#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/UI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3960">
+          <caret line="209" column="18" lean-forward="true" selection-start-line="209" selection-start-column="18" selection-end-line="209" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!block;n#MoveBar#0" expanded="false" />
+            <element signature="e#410#995#0" expanded="false" />
+            <element signature="e#1147#1484#0" expanded="false" />
+            <element signature="n#!!block;n#LimitFontSize#0" expanded="false" />
+            <element signature="e#2276#2871#0" expanded="false" />
+            <element signature="n#!!block;n#TimeCountDown#0" expanded="false" />
+            <element signature="e#3331#3765#0" expanded="false" />
+            <element signature="e#3920#4112#0" expanded="false" />
+            <element signature="e#4297#4530#0" expanded="false" />
+            <element signature="n#!!block;n#ModalBox#0" expanded="false" />
+            <element signature="e#5577#5896#0" expanded="false" />
+            <element signature="e#6039#6227#0" expanded="false" />
+            <element signature="e#6370#6623#0" expanded="false" />
+            <element signature="e#6772#7024#0" expanded="false" />
+            <element signature="e#7172#8123#0" expanded="false" />
+            <element signature="e#8313#8683#0" expanded="false" />
+            <element signature="e#8876#9490#0" expanded="false" />
+            <element signature="e#9638#11964#0" expanded="false" />
+            <element signature="e#12108#13613#0" expanded="false" />
+            <element signature="e#13815#14283#0" expanded="false" />
+            <element signature="e#14461#15157#0" expanded="false" />
+            <element signature="n#!!block;n#HtmlFontSize#0" expanded="false" />
+            <element signature="e#15540#15657#0" expanded="false" />
+            <element signature="e#15817#16130#0" expanded="false" />
+            <element signature="n#!!block;n#Touch#0" expanded="false" />
+            <element signature="e#16422#16579#0" expanded="false" />
+            <element signature="n#!!block;n#Lazyload#0" expanded="false" />
+            <element signature="e#17126#18304#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/shop.page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

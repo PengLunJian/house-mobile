@@ -19,10 +19,6 @@ $(function () {
         ]
     });
 
-    var oLazy = new Lazyload({
-        loadImgLength: 5
-    });
-
     $(".icon-message").on("click", function () {
         var paramsObj = {
             method: "sel_tel",
