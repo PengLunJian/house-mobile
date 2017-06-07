@@ -587,10 +587,13 @@ Lazyload.prototype.loading = function () {
     return _protoObj_;
 }
 
-new HtmlFontSize({
-    element: "html"
-});
 
-new Lazyload({
-    loadImgCount: 5
+$(function () {
+    new HtmlFontSize({
+        element: "html"
+    });
+
+    new Lazyload({
+        loadImgCount: 5
+    });
 })

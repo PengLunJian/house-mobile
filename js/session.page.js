@@ -11,25 +11,22 @@ function SessionPage(obj) {
     this.page_code = obj.page_code ? obj.page_code : 1;
     this.oInput = obj.oInput ? obj.oInput : $("input[name='say']");
     this.url = obj.url ? obj.url : "http://gl.2ma2.com/ashx/IMAjax.ashx";
-
-    this.overTimeOpera = this.returnTimer(obj);
-    this.init(".fixed").dropDown().sendMsg(".send").DropDownAnimation(document, obj);
+    this.init(".session_content", obj).dropDown(".session_container").sendMsg(".send");
 }
 /**
  *
  * @param element
  * @returns {SessionPage}
  */
-SessionPage.prototype.init = function (element) {
+SessionPage.prototype.init = function (element, obj) {
     var _protoObj_ = this;
-    this.oInput.on("blur", function () {
-        $(element).removeClass("absolute");
-    });
-    $(".session_content").on("touchstart", function () {
+    this.overTimeOpera = this.getTimer(obj);
+    $(element).on("touchstart", function () {
         _protoObj_.oInput.blur();
     });
-    this.oInput.on("focus", function () {
-        $(element).addClass("absolute");
+    $(document).on("touchstart", function () {
+        clearInterval(_protoObj_.overTimeOpera);
+        _protoObj_.overTimeOpera = _protoObj_.getTimer(obj);
     });
     return this;
 }
@@ -38,7 +35,7 @@ SessionPage.prototype.init = function (element) {
  * @param obj
  * @returns {number}
  */
-SessionPage.prototype.returnTimer = function (obj) {
+SessionPage.prototype.getTimer = function (obj) {
     var _protoObj_ = this;
     var timer = setTimeout(function () {
         obj.overTimeOpera();
@@ -83,7 +80,7 @@ SessionPage.prototype.pushMsg = function (paramsObj) {
     $(".session_content").append(template);
     this.oInput.val("");
     this.oInput.focus();
-    this.moveBottom();
+    this.moveBottom(".session_container");
     this.saveMsg(paramsObj);
     return this;
 }
@@ -119,7 +116,7 @@ SessionPage.prototype.historyRecord = function (paramsObj) {
                 for (var i = 0; i < data.length; i++) {
                     template += _protoObj_.getTemplate(_protoObj_.getParamsObj(data[i]));
                 }
-                $("#load_more").after(template);
+                $(".session_content").prepend(template);
             } else {
                 $("#load_more").html("全部加载完毕！");
             }
@@ -161,11 +158,12 @@ SessionPage.prototype.saveMsg = function (paramsObj) {
 }
 /**
  *
+ * @param element
  * @returns {SessionPage}
  */
-SessionPage.prototype.dropDown = function () {
+SessionPage.prototype.dropDown = function (element) {
     var _protoObj_ = this;
-    $(window).on("scroll", function () {
+    $(element).on("scroll", function () {
         if ($(this).scrollTop() <= 0) {
             if (_protoObj_.timer) clearInterval(_protoObj_.timer);
             _protoObj_.timer = setTimeout(function () {
@@ -185,7 +183,7 @@ SessionPage.prototype.dropDown = function () {
 SessionPage.prototype.pullMsg = function (paramsObj) {
     var template = this.getTemplate(paramsObj);
     $(".session_content").append(template);
-    this.moveBottom();
+    this.moveBottom(".session_container");
     this.saveMsg(paramsObj);
     return this;
 }
@@ -207,13 +205,14 @@ SessionPage.prototype.getParamsObj = function (paramsObj) {
 }
 /**
  *
+ * @param element
  * @returns {SessionPage}
  */
-SessionPage.prototype.moveBottom = function () {
+SessionPage.prototype.moveBottom = function (element) {
     var frontHeight = $(".fixed").outerHeight();
-    var afterHeight = $("body").outerHeight();
+    var afterHeight = $(".session_content").outerHeight();
     var offsetHeight = afterHeight - frontHeight;
-    $("html,body").animate({
+    $(element).animate({
         scrollTop: offsetHeight
     });
     return this;
@@ -243,6 +242,7 @@ SessionPage.prototype.setTransform = function (element, value) {
 /**
  *
  * @param element
+ * @param obj
  * @returns {SessionPage}
  * @constructor
  */
@@ -253,7 +253,7 @@ SessionPage.prototype.DropDownAnimation = function (element, obj) {
         _protoObj_.initX = touch.pageX;
         _protoObj_.initY = touch.pageY;
         clearInterval(_protoObj_.overTimeOpera);
-        _protoObj_.overTimeOpera = _protoObj_.returnTimer(obj);
+        _protoObj_.overTimeOpera = _protoObj_.getTimer(obj);
     });
 
     $(element).on("touchmove", function (ev) {

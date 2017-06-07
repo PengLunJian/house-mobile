@@ -273,11 +273,10 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=dSOifPmaDAIejuRUt2iPeFy1eaIb3t28"></script>
 <script type="text/javascript">
     $(function () {
-        (function sliderBanner($) {
-            var mySwiper = new Swiper('.banner .swiper-container', {
+        (function sliderBanner($, element) {
+            var mySwiper = new Swiper(element, {
                 loop: true,
-                observer: true,
-                observeParents: true,
+                initialSlide: 0,
                 autoplayDisableOnInteraction: false,
                 onSlideChangeStart: function () {
                     var pageCode = $(".swiper-slide-active").attr("data-swiper-slide-index");
@@ -285,7 +284,7 @@
                     $(".slide_code").html(1 + parseInt(pageCode) + " / " + fullCode);
                 }
             });
-        })(jQuery);
+        })(jQuery, '.banner .swiper-container');
 
         (function ellipsis($) {
             $(".g_ctx").each(function () {
