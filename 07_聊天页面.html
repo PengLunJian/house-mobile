@@ -25,28 +25,7 @@
         <img src="images/load_more.png" alt="加载更多"/>
     </div>
     <div class="session_container">
-        <ul class="session_content">
-            <li id="dbafd9933073b63970151655cd14c762" class="out">
-                <div class="image">
-                    <img src="images/user_logo.jpg">
-                </div>
-                <div class="info">
-                    <p>
-                        <a href="http://www.baidu.com">
-                            <div class="item-img">
-                                <img src="images/room_pic.jpg" alt=""/>
-                            </div>
-                            <div class="item-info">
-                                <span class="item-id"></span>
-                                <h2 class="item-title ellipsis">东南半岛花苑</h2>
-                                <em class="item-price">120万</em>
-                            </div>
-                        </a>
-                    </p>
-                </div>
-                <p class="msg"></p>
-            </li>
-        </ul>
+        <ul class="session_content"></ul>
     </div>
     <div class="fixed">
         <input type="text" name="say" value="" class="say"/>
@@ -60,7 +39,7 @@
 <script src="js/session.page.js" type="text/javascript"></script>
 <script type="text/javascript">
     var sp = new SessionPage({
-        overTime: 0.1,
+        overTime: 5,
         overTimeOpera: function () {
             console.log("do some thins");
         }
@@ -375,13 +354,15 @@
 //        console.log('收到自定义系统通知', sysMsg);
     }
 
+    /**
+     * 同步完成加载历史记录
+     */
     function onSyncDone() {
 //        console.log('同步完成');
         var paramsObj = sp.getParamsObj({});
+        sp.ajaxRequestCustomerMsg(paramsObj);
         sp.historyRecord(paramsObj);
     }
-
-
     /**
      * 收到消息
      * @param msg

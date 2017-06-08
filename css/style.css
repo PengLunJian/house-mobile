@@ -2644,7 +2644,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     margin: 0.16rem 0.2rem 0rem;
 }
 
-.chat_page li .info p {
+.chat_page li .info .info_msg {
     max-width: 100%;
     position: relative;
     min-height: 0.42rem;
@@ -2658,7 +2658,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     border: 1px solid #83b8ff;
 }
 
-.chat_page li .info p:before {
+.chat_page li .info .info_msg:before {
     content: '';
     display: block;
     position: absolute;
@@ -2670,7 +2670,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     border-left: 1px solid #83b8ff;
 }
 
-.chat_page li.in .info p:before {
+.chat_page li.in .info .info_msg:before {
     left: -0.06rem;
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
@@ -2679,7 +2679,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     transform: rotate(-45deg);
 }
 
-.chat_page li.out .info p:before {
+.chat_page li.out .info .info_msg:before {
     right: -0.06rem;
     -webkit-transform: rotate(135deg);
     -moz-transform: rotate(135deg);
@@ -2688,7 +2688,63 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     transform: rotate(135deg);
 }
 
-.chat_page li.error .info p:after {
+.chat_page li .info .item-img {
+    width: 30.38%;
+    height: 0.54rem;
+    font-size: 0rem;
+}
+
+.chat_page li .info .item-info {
+    width: 69.62%;
+    height: 0.54rem;
+    overflow: hidden;
+    line-height: 0.18rem;
+    padding-left: 0.08rem;
+}
+
+.chat_page li .info .item-info .item-title {
+    height: 0.18rem;
+    font-size: 0.14rem;
+    font-weight: normal;
+    line-height: 0.18rem;
+}
+
+.chat_page li .info .item-info .item-id {
+    font-size: 0.15rem;
+    padding-right: 0.05rem;
+    vertical-align: middle;
+}
+
+.chat_page li .info .item-info .item-price {
+    color: #f4651f;
+    display: block;
+    font-weight: bold;
+    font-size: 0.13rem;
+}
+
+.chat_page li .info .item-params {
+    color: #919191;
+    font-size: 0.12rem;
+    line-height: 0.12rem;
+    padding: 0.03rem 0rem;
+}
+
+.chat_page li .info .item-params li {
+    float: left;
+    padding: 0rem 0.06rem;
+    border-right: 1px solid #d5d5d5;
+}
+
+.chat_page li .info .item-params li:first-child {
+    padding-left: 0rem;
+}
+
+.chat_page li .info .item-params li:last-child {
+    padding-right: 0rem;
+    border: none;
+}
+
+.chat_page li.error .info .info_msg:after {
     content: '!';
     display: block;
     position: absolute;
@@ -2710,11 +2766,11 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
 }
 
-.chat_page li.in.error .info p:after {
+.chat_page li.in.error .info .info_msg:after {
     right: -0.3rem;
 }
 
-.chat_page li.out.error .info p:after {
+.chat_page li.out.error .info .info_msg:after {
     left: -0.3rem;
 }
 
@@ -2724,6 +2780,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 }
 
 .chat_page .out .info {
+    font-size: 0rem;
     text-align: right;
     padding-left: 0.42rem;
     padding-right: 0.58rem;

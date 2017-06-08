@@ -4,29 +4,26 @@
  * @constructor
  */
 function SessionPage(obj) {
+    this.obj = obj ? obj : null;
     this.initX = obj.initX ? obj.initX : 0;
     this.initY = obj.initY ? obj.initY : 0;
     this.timer = obj.timer ? obj.timer : null;
     this.overTime = obj.overTime ? obj.overTime : 0;
     this.page_code = obj.page_code ? obj.page_code : 1;
     this.oInput = obj.oInput ? obj.oInput : $("input[name='say']");
-    this.url = obj.url ? obj.url : "http://gl.2ma2.com/ashx/IMAjax.ashx";
-    this.init(".session_content", obj).dropDown(".session_container").sendMsg(".send");
+    this.url = obj.url ? obj.url : "http://gltest.2ma2.com/ashx/IMAjax.ashx";
+    this.init(".session_content").dropDown(".session_container").sendMsg(".send");
 }
 /**
  *
  * @param element
  * @returns {SessionPage}
  */
-SessionPage.prototype.init = function (element, obj) {
+SessionPage.prototype.init = function (element) {
     var _protoObj_ = this;
-    this.overTimeOpera = this.getTimer(obj);
+    this.overTimeOpera = this.getTimer();
     $(element).on("touchstart", function () {
         _protoObj_.oInput.blur();
-    });
-    $(document).on("touchstart", function () {
-        clearInterval(_protoObj_.overTimeOpera);
-        _protoObj_.overTimeOpera = _protoObj_.getTimer(obj);
     });
     return this;
 }
@@ -35,10 +32,10 @@ SessionPage.prototype.init = function (element, obj) {
  * @param obj
  * @returns {number}
  */
-SessionPage.prototype.getTimer = function (obj) {
+SessionPage.prototype.getTimer = function () {
     var _protoObj_ = this;
     var timer = setTimeout(function () {
-        obj.overTimeOpera();
+        _protoObj_.obj.overTimeOpera();
     }, _protoObj_.overTime * 60 * 1000);
     return timer;
 }
@@ -65,9 +62,24 @@ SessionPage.prototype.sendMsg = function (element) {
  * @returns {string}
  */
 SessionPage.prototype.getTemplate = function (paramsObj) {
-    var template = '<li id="' + paramsObj['idClient'] + '" class="' + paramsObj['flow'] + '">'
-        + '<div class="image"><img src="' + paramsObj['userImg'] + '"></div><div class="info">'
-        + '<p>' + paramsObj['text'] + '</p></div><p class="msg"></p></li>';
+    var template = "";
+    //console.log(paramsObj['type']);
+    if ("text" == paramsObj['type']) {
+        template = '<li id="' + paramsObj['idClient'] + '" class="' + paramsObj['flow'] + '">'
+            + '<div class="image"><img src="' + paramsObj['userImg'] + '"></div><div class="info">'
+            + '<div class="info_msg">' + paramsObj['text'] + '</div></div><p class="msg"></p></li>';
+    } else if ("custom" == paramsObj['type']) {
+        //自定义推送信息模板
+        //<li class="item-rate">' + tempObj['no'] + '</li>
+        var tempObj = JSON.parse(paramsObj['content'])['data'];
+        template = '<li id="' + paramsObj['idClient'] + '" class="' + paramsObj['flow'] + '"><div class="image">'
+            + '<img src="' + paramsObj['userImg'] + '"></div><div class="info"><div class="info_msg"><a href="javascript:void(0);">'
+            + '<div class="item-box clearfix"><div class="item-img col-md-5"><img src="images/loading.png" data-original="' + tempObj['pic'] + '" data-loaded="false"/>'
+            + '</div><div class="item-info col-md-7"><h2 class="item-title ellipsis"><i class="item-id">#' + tempObj['estno'] + '</i>'
+            + '<span>' + tempObj['name'] + '</span></h2><ul class="item-params clearfix"><li class="item-area">' + tempObj['size'] + '</li>'
+            + '<li class="item-layout">' + tempObj['div'] + '</li></ul><em class="item-price">' + tempObj['price'] + '</em>'
+            + '</div></div></a></div></div><p class="msg"></p></li>';
+    }
     return template;
 }
 /**
@@ -110,11 +122,11 @@ SessionPage.prototype.historyRecord = function (paramsObj) {
         data: paramsObj,
         dataType: "text",
         success: function (data) {
-            data = JSON.parse(data);
             if (data.length > 0) {
                 _protoObj_.page_code++;
-                for (var i = 0; i < data.length; i++) {
-                    template += _protoObj_.getTemplate(_protoObj_.getParamsObj(data[i]));
+                var JSON_DATA = JSON.parse(data);
+                for (var i = 0; i < JSON_DATA.length; i++) {
+                    template += _protoObj_.getTemplate(_protoObj_.getParamsObj(JSON_DATA[i]));
                 }
                 $(".session_content").prepend(template);
             } else {
@@ -135,6 +147,8 @@ SessionPage.prototype.historyRecord = function (paramsObj) {
 SessionPage.prototype.saveMsg = function (paramsObj) {
     var _protoObj_ = this;
     paramsObj['method'] = "add_msg";
+    clearInterval(this.overTimeOpera);
+    this.overTimeOpera = this.getTimer();
     if ("success" == paramsObj['status']) {
         $.ajax({
             url: _protoObj_.url,
@@ -193,6 +207,7 @@ SessionPage.prototype.pullMsg = function (paramsObj) {
  * @returns {*}
  */
 SessionPage.prototype.getParamsObj = function (paramsObj) {
+    paramsObj.type = paramsObj.type ? paramsObj.type : "text";
     paramsObj.tel = paramsObj.tel ? paramsObj.tel : localStorage.getItem("phone");
     paramsObj.page_code = paramsObj.page_code ? paramsObj.page_code : this.page_code;
     paramsObj.data_id = paramsObj.data_id ? paramsObj.data_id : localStorage.getItem("dataId");
@@ -274,5 +289,40 @@ SessionPage.prototype.DropDownAnimation = function (element, obj) {
         _protoObj_.setTransform(".session_content", 0);
     });
 
+    return this;
+}
+/**
+ *
+ * @param paramsObj
+ * @returns {SessionPage}
+ */
+SessionPage.prototype.ajaxRequestCustomerMsg = function (paramsObj) {
+    var _protoObj_ = this;
+    paramsObj['method'] = "messaget_est";
+    paramsObj['est_row_id'] = "50cf1a0e-894a-422d-b642-997c482b5491";
+    if (paramsObj['est_row_id']) {
+        $.ajax({
+            url: _protoObj_.url,
+            type: "POST",
+            data: paramsObj,
+            dataType: "JSON",
+            success: function (data) {
+                var content = {
+                    type: 5,
+                    data: data
+                };
+                var msg = nim.sendCustomMsg({
+                    scene: 'p2p',
+                    to: localStorage.getItem("toUser"),
+                    content: JSON.stringify(content),
+                    isLocal: true,
+                    done: sendMsgDone
+                });
+            },
+            error: function (msg) {
+                console.log(msg);
+            }
+        });
+    }
     return this;
 }

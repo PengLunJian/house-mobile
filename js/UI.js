@@ -464,7 +464,7 @@ ModalBox.prototype.setLocalStorage = function (url) {
         }
     })
     localStorage.setItem("dataId", "353");
-    localStorage.setItem("toUser", "11_710");
+    localStorage.setItem("toUser", "11_799");
     localStorage.setItem("account", "11_675");
     localStorage.setItem("phone", "15900912480");
     localStorage.setItem("fromUser", "15900912480");
@@ -580,6 +580,7 @@ Lazyload.prototype.loading = function () {
                     $(_this).css("opacity", 0);
                     $(_this).attr("src", _this.tempImgObj.src);
                     $(_this).animate({"opacity": 1}, 300);
+                    _this.tempImgObj = null;
                 });
             }
         });
