@@ -548,8 +548,8 @@ Touch.prototype.getTouch = function (ev) {
  */
 function Lazyload(obj) {
     this.timer = obj.timer ? obj.timer : null;
-    this.loadImg = obj.loadImg ? obj.loadImg : "images/loading.png";
     this.loadImgCount = obj.loadImgCount ? obj.loadImgCount : 5;
+    this.loadImg = obj.loadImg ? obj.loadImg : "images/loading.png";
     this.element = obj.element ? obj.element : "img[src='" + this.loadImg + "']";
 
     this.loading();
@@ -578,8 +578,12 @@ Lazyload.prototype.loading = function () {
                 $(this.tempImgObj).on("load", function () {
                     $(_this).attr("data-loaded", "true");
                     $(_this).css("opacity", 0);
-                    $(_this).attr("src", _this.tempImgObj.src);
+                    $(_this).attr("src", this.src);
                     $(_this).animate({"opacity": 1}, 300);
+                    _this.tempImgObj = null;
+                });
+                $(this.tempImgObj).on("error", function () {
+                    $(_this).attr("data-loaded", "true");
                     _this.tempImgObj = null;
                 });
             }

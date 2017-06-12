@@ -63,12 +63,11 @@ SessionPage.prototype.sendMsg = function (element) {
  */
 SessionPage.prototype.getTemplate = function (paramsObj) {
     var template = "";
-    //console.log(paramsObj['type']);
     if ("text" == paramsObj['type']) {
         template = '<li id="' + paramsObj['idClient'] + '" class="' + paramsObj['flow'] + '">'
             + '<div class="image"><img src="' + paramsObj['userImg'] + '"></div><div class="info">'
             + '<div class="info_msg">' + paramsObj['text'] + '</div></div><p class="msg"></p></li>';
-    } else if ("custom" == paramsObj['type']) {
+    } else if (5 == JSON.parse(paramsObj['content'])['type']) {
         //自定义推送信息模板
         //<li class="item-rate">' + tempObj['no'] + '</li>
         var tempObj = JSON.parse(paramsObj['content'])['data'];
