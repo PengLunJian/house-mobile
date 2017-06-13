@@ -159,7 +159,7 @@
         </div>
         <div class="g_info row">
             <div class="g_desc size">
-                <p class="g_ctx" data-max-size="166">
+                <p class="g_ctx">
                     房源位于西门地铁6号6-8分，位于热闹中心，交通便利，逛
                     街购物，美食应有尽有，有电梯，房间全新装修，干净明亮；
                     <i></i>       步行10分钟，可以看见麦当劳、肯德基、诚品书店、
@@ -219,7 +219,7 @@
             </div>
             <p class="g_ske ellipsis">繁华地段 双学区房，学区未用，采光好，生活便利</p>
             <div class="g_desc">
-                <p class="g_ctx" data-max-size="100">繁华地段 双学区房，学区未用，采光好，生活便利 交通方便 近超市，公交，菜市场， 精装修清爽干净
+                <p class="g_ctx">繁华地段 双学区房，学区未用，采光好，生活便利 交通方便 近超市，公交，菜市场， 精装修清爽干净
                     家电齐全。拎包入住房东诚心出售，看房方便
                     景观楼层看房联系王先生15978555096</p>
                 <a href="javascript:void(0);" class="btn more">阅读更多</a>
@@ -246,7 +246,7 @@
             </div>
             <p class="g_ske ellipsis">繁华地段 双学区房，学区未用，采光好，生活便利</p>
             <div class="g_desc">
-                <p class="g_ctx" data-max-size="100">繁华地段 双学区房，学区未用，采光好，生活便利 交通方便 近超市，公交，菜市场， 精装修清爽干净
+                <p class="g_ctx">繁华地段 双学区房，学区未用，采光好，生活便利 交通方便 近超市，公交，菜市场， 精装修清爽干净
                     家电齐全。拎包入住房东诚心出售，看房方便
                     景观楼层看房联系王先生15978555096</p>
                 <a href="javascript:void(0);" class="btn more">阅读更多</a>
@@ -300,29 +300,12 @@
             });
         })(jQuery);
 
-        (function ellipsis($) {
-            var regExp = /<\/?[^>]*>|\\s+/g;
-            $(".g_ctx").each(function () {
-                var maxFontSize = parseInt($(this).attr("data-max-size"));
-                this.dataText = $(this).html().replace(regExp,"").trim();
-                if (this.dataText.length >= maxFontSize) {
-                    this.dataFilterText = this.dataText.substring(0, maxFontSize) + "...";
-                } else {
-                    this.dataFilterText = this.dataText;
-                }
-                $(this).text(this.dataFilterText);
-            });
-            $(".btn.more").on("click", function () {
-                var temp = $(this).prev();
-                if ($(this).hasClass("hide")) {
-                    $(this).removeClass("hide");
-                    temp.text(temp[0].dataFilterText);
-                } else {
-                    $(this).addClass("hide");
-                    temp.text(temp[0].dataText);
-                }
-            });
-        })(jQuery);
+        new LimitFontSize({
+            iSwitch: false,
+            element: ".btn.more",
+            TELement: ".g_ctx",
+            limitFontSize: 100,
+        });
 
         (function ($) {
             //点击收藏按钮

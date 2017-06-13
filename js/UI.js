@@ -52,39 +52,54 @@ MoveBar.prototype.setTranslate = function (value) {
  * @constructor 字数限制构造函数
  */
 function LimitFontSize(obj) {
-    this.iSwitch = obj.iSwitch;
     this.element = obj.element;
-    this.targetElement = obj.targetElement;
+    this.TElement = obj.TElement;
+    this.iSwitch = obj.iSwitch ? obj.iSwitch : false;
     this.limitFontSize = obj.limitFontSize ? obj.limitFontSize : 100;
 
-    this.targetElementText = $(this.targetElement).text().trim();
-    this.targetElementTextLen = $(this.targetElement).text().trim().length;
-    if (this.targetElementTextLen <= this.limitFontSize) {
-        $(this.element).remove();
-    } else {
-        $(this.targetElement).text(this.targetElementText.substring(0, this.limitFontSize) + "...");
-    }
+    this.init().hide();
+}
+/**
+ * BEGIN 字数限制初始化
+ * Author:PengLunJian
+ * Date:2017-05-10
+ * @returns {LimitFontSize}
+ */
+LimitFontSize.prototype.init = function () {
+    var _protoObj_ = this;
+    $(this.element).each(function () {
+        this.iSwitch = _protoObj_.iSwitch;
+        this.TELement = $(this).prev(_protoObj_.TELement);
+        this.TELText = this.TELement.text().trim();
+        this.TELTextLen = this.TELText.length;
+        if (this.TELTextLen <= _protoObj_.limitFontSize) {
+            $(this).remove();
+        } else {
+            this.TELement.text(this.TELText.substring(0, _protoObj_.limitFontSize) + "...");
+        }
+    })
+    return this;
 }
 /**
  * BEGIN 字数限制原型Hide方法
  * Author:PengLunJian
  * Date:2017-05-10
+ * @returns {LimitFontSize}
  */
 LimitFontSize.prototype.hide = function () {
-    var tempObj = this;
-    if (this.targetElementTextLen >= this.limitFontSize) {
-        $(this.element).on("click", function () {
-            if (tempObj.iSwitch) {
-                tempObj.iSwitch = false;
-                $(tempObj.element).html("阅读更多");
-                $(tempObj.targetElement).text(tempObj.targetElementText.substring(0, tempObj.limitFontSize) + "...");
-            } else {
-                tempObj.iSwitch = true;
-                $(tempObj.element).html("收起更多");
-                $(tempObj.targetElement).text(tempObj.targetElementText);
-            }
-        });
-    }
+    var _protoObj_ = this;
+    $(this.element).on("click", function () {
+        if (this.iSwitch) {
+            this.iSwitch = false;
+            $(this).html("阅读更多");
+            this.TELement.text(this.TELText.substring(0, _protoObj_.limitFontSize) + "...");
+        } else {
+            this.iSwitch = true;
+            $(this).html("收起更多");
+            this.TELement.text(this.TELText);
+        }
+    });
+    return this;
 }
 /**
  * BEGIN 倒计时插件
@@ -160,7 +175,6 @@ TimeCountDown.prototype.restartTime = function (fn) {
  * @constructor 验证模态框构造函数
  */
 function ModalBox(obj) {
-    this.elements = obj.elements ? obj.elements : null;
     this.elementBg = obj.elementBg ? obj.elementBg : ".modal_bg";
     this.elementInput = obj.elementInput ? obj.elementInput : "";
     this.elementBtnBack = obj.elementBtnBack ? obj.elementBtnBack : ".btn.back";
@@ -168,9 +182,10 @@ function ModalBox(obj) {
     this.elementBtnClose = obj.elementBtnClose ? obj.elementBtnClose : ".btn.close";
     this.elementBtnCancel = obj.elementBtnCancel ? obj.elementBtnCancel : ".btn.cancel";
     this.elementBtnConfirm = obj.elementBtnConfirm ? obj.elementBtnConfirm : ".btn.confirm";
+    this.elements = obj.elements ? obj.elements : [".modal_login", ".modal_phone", ".modal_code", ".modal_success"];
 
     this.oTime = null, this.phone = null, this.code = null;
-    this.closeModal().prevModal().nextModal().checkCode().setLocalStorage("");
+    this.closeModal().prevModal().nextModal().checkCode().setLocalStorage("").openModalBox(obj);
 }
 /**
  * BEGIN 重置模态框状态
@@ -473,6 +488,18 @@ ModalBox.prototype.setLocalStorage = function (url) {
     localStorage.setItem("inImg", "images/chat_logo.jpg");
     localStorage.setItem("userId", "osZl4jjpN6OO58xgTZSUgxlUpRYb");
 
+    return this;
+}
+/**
+ *
+ * @param paramsObj
+ * @returns {ModalBox}
+ */
+ModalBox.prototype.openModalBox = function (paramsObj) {
+    var _protoObj_ = this;
+    $(".icon-message").on("click", function () {
+        _protoObj_.isChecked(paramsObj);
+    });
     return this;
 }
 /**

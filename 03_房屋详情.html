@@ -177,7 +177,7 @@
                     </div>
                     <div class="g_ps pull-left">
                         <span class="g_shop">春晖店</span>
-                        <em class="g_name">田盼丽</em>
+                        <em class="g_name">田盼丽<i class="status on">[<span></span>]</i></em>
                         <p class="g_phone">13681662359</p>
                     </div>
                     <div class="clearfix"></div>
@@ -189,7 +189,7 @@
             </div>
             <p class="g_ske ellipsis">繁华地段 双学区房，学区未用，采光好，生活便利</p>
             <div class="g_desc">
-                <p class="g_ctx" data-max-size="100">繁华地段 双学区房，学区未用，采光好，生活便利 交通方便 近超市，公交，菜市场， 精装修清爽干净
+                <p class="g_ctx">繁华地段 双学区房，学区未用，采光好，生活便利 交通方便 近超市，公交，菜市场， 精装修清爽干净
                     家电齐全。拎包入住房东诚心出售，看房方便
                     景观楼层看房联系王先生15978555096</p>
                 <a href="javascript:void(0);" class="btn more">阅读更多</a>
@@ -216,7 +216,7 @@
             </div>
             <p class="g_ske ellipsis">繁华地段 双学区房，学区未用，采光好，生活便利</p>
             <div class="g_desc">
-                <p class="g_ctx" data-max-size="100">繁华地段 双学区房，学区未用，采光好，生活便利 交通方便 近超市，公交，菜市场， 精装修清爽干净
+                <p class="g_ctx">繁华地段 双学区房，学区未用，采光好，生活便利 交通方便 近超市，公交，菜市场， 精装修清爽干净
                     家电齐全。拎包入住房东诚心出售，看房方便
                     景观楼层看房联系王先生15978555096</p>
                 <a href="javascript:void(0);" class="btn more">阅读更多</a>
@@ -276,7 +276,7 @@
                     <img src="images/loading.png" data-original="images/room_pic.jpg" data-loaded="false"/>
                 </div>
                 <div class="item-info col-md-9">
-                    <p class="item-name">运营部-张洁</p>
+                    <p class="item-name">运营部-张洁<i class="status on">[<span></span>]</i></p>
                     <p class="item-phone">17612155625</p>
                 </div>
             </div>
@@ -308,28 +308,12 @@
             });
         })(jQuery, '.banner .swiper-container');
 
-        (function ellipsis($) {
-            $(".g_ctx").each(function () {
-                var maxFontSize = parseInt($(this).attr("data-max-size"));
-                this.dataText = $(this).text().trim();
-                if (this.dataText.length >= maxFontSize) {
-                    this.dataFilterText = this.dataText.substring(0, maxFontSize) + "...";
-                } else {
-                    this.dataFilterText = this.dataText;
-                }
-                $(this).text(this.dataFilterText);
-            });
-            $(".btn.more").on("click", function () {
-                var temp = $(this).prev();
-                if ($(this).hasClass("hide")) {
-                    $(this).removeClass("hide");
-                    temp.text(temp[0].dataFilterText);
-                } else {
-                    $(this).addClass("hide");
-                    temp.text(temp[0].dataText);
-                }
-            });
-        })(jQuery);
+        new LimitFontSize({
+            iSwitch: false,
+            element: ".btn.more",
+            TELement: ".g_ctx",
+            limitFontSize: 100,
+        });
 
         (function ($) {
             //点击收藏按钮

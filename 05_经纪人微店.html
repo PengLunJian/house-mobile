@@ -36,7 +36,7 @@
                 <img src="images/person.png" alt=""/>
             </div>
             <a href="javascript:void(0)" class="icon-message"></a>
-            <p class="person-name">吴春英<i class="on">[<span></span>]</i></p>
+            <p class="person-name">吴春英<i class="status on">[<span></span>]</i></p>
             <p class="person-info ellipsis">北区房地产四季1店</p>
         </div>
         <!------ 经纪人简介 ------>
@@ -426,6 +426,21 @@
         </div>
     </div>
 </div>
-<script src="js/shop.page.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        new LimitFontSize({
+            iSwitch: false,
+            element: ".btn-limit",
+            TELment: ".p-context",
+            limitFontSize: 95,
+        });
+
+        new ModalBox({
+            method: "sel_tel",
+            userid: "osZl4jjpN6OO58xgTZSUgxlUpRYb",
+            url: "http://gl.2ma2.com/ashx/IMAjax.ashx"
+        });
+    })
+</script>
 </body>
 </html>

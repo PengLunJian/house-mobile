@@ -9,10 +9,11 @@ function SessionPage(obj) {
     this.initY = obj.initY ? obj.initY : 0;
     this.timer = obj.timer ? obj.timer : null;
     this.overTime = obj.overTime ? obj.overTime : 0;
+    this.iSwitch = obj.iSwitch ? obj.iSwitch : false;
     this.page_code = obj.page_code ? obj.page_code : 1;
     this.oInput = obj.oInput ? obj.oInput : $("input[name='say']");
     this.url = obj.url ? obj.url : "http://gltest.2ma2.com/ashx/IMAjax.ashx";
-    this.init(".session_content").dropDown(".session_container").sendMsg(".send");
+    this.init(".session_content").dropDown(".session_container");
 }
 /**
  *
@@ -24,6 +25,10 @@ SessionPage.prototype.init = function (element) {
     this.overTimeOpera = this.getTimer();
     $(element).on("touchstart", function () {
         _protoObj_.oInput.blur();
+    });
+    $(".send").on("click", function () {
+        var content = _protoObj_.oInput.val();
+        _protoObj_.sendMsg(content);
     });
     return this;
 }
@@ -41,19 +46,25 @@ SessionPage.prototype.getTimer = function () {
 }
 /**
  *
- * @param element
+ * @param content
  * @returns {SessionPage}
  */
-SessionPage.prototype.sendMsg = function (element) {
-    var _protoObj_ = this;
-    $(element).on("click", function () {
-        var msg = nim.sendText({
-            scene: 'p2p',
-            to: localStorage.getItem("toUser"),
-            text: _protoObj_.oInput.val(),
-            done: sendMsgDone
-        });
-    });
+SessionPage.prototype.sendMsg = function (content) {
+    var msgObj = {
+        scene: 'p2p',
+        to: localStorage.getItem("toUser"),
+        done: sendMsgDone
+    }
+    switch (typeof content) {
+        case "object":
+            msgObj['content'] = JSON.stringify(content);
+            nim.sendCustomMsg(msgObj);
+            break;
+        default:
+            msgObj['text'] = content;
+            nim.sendText(msgObj);
+            break;
+    }
     return this;
 }
 /**
@@ -121,16 +132,21 @@ SessionPage.prototype.historyRecord = function (paramsObj) {
         data: paramsObj,
         dataType: "text",
         success: function (data) {
-            if (data.length > 0) {
-                _protoObj_.page_code++;
-                var JSON_DATA = JSON.parse(data);
+            var JSON_DATA = JSON.parse(data);
+            if (JSON_DATA.length > 0) {
                 for (var i = 0; i < JSON_DATA.length; i++) {
                     template += _protoObj_.getTemplate(_protoObj_.getParamsObj(JSON_DATA[i]));
                 }
                 $(".session_content").prepend(template);
+                _protoObj_.ajaxRequestCustomerMsg(paramsObj);
+                _protoObj_.page_code++;
+                _protoObj_.iSwitch = true;
             } else {
                 $("#load_more").html("全部加载完毕！");
+                _protoObj_.sendGreetMsg(paramsObj);
+                _protoObj_.ajaxRequestCustomerMsg(paramsObj);
             }
+
         },
         error: function (msg) {
             $("#load_more").html("服务器连接异常，请检查您的网络或联系管理员!");
@@ -180,9 +196,7 @@ SessionPage.prototype.dropDown = function (element) {
         if ($(this).scrollTop() <= 0) {
             if (_protoObj_.timer) clearInterval(_protoObj_.timer);
             _protoObj_.timer = setTimeout(function () {
-                _protoObj_.historyRecord(_protoObj_.getParamsObj({
-                    method: "get_msg"
-                }));
+                _protoObj_.historyRecord(_protoObj_.getParamsObj({}));
             }, 500);
         }
     });
@@ -299,29 +313,48 @@ SessionPage.prototype.ajaxRequestCustomerMsg = function (paramsObj) {
     var _protoObj_ = this;
     paramsObj['method'] = "messaget_est";
     paramsObj['est_row_id'] = "50cf1a0e-894a-422d-b642-997c482b5491";
-    if (paramsObj['est_row_id']) {
-        $.ajax({
-            url: _protoObj_.url,
-            type: "POST",
-            data: paramsObj,
-            dataType: "JSON",
-            success: function (data) {
-                var content = {
-                    type: 5,
-                    data: data
-                };
-                var msg = nim.sendCustomMsg({
-                    scene: 'p2p',
-                    to: localStorage.getItem("toUser"),
-                    content: JSON.stringify(content),
-                    isLocal: true,
-                    done: sendMsgDone
-                });
-            },
-            error: function (msg) {
-                console.log(msg);
-            }
-        });
+    if (this.page_code == 1) {
+        if (paramsObj['est_row_id']) {
+            $.ajax({
+                url: _protoObj_.url,
+                type: "POST",
+                data: paramsObj,
+                dataType: "JSON",
+                success: function (data) {
+                    var content = {
+                        type: 5,
+                        data: data
+                    };
+                    _protoObj_.sendMsg(content);
+                    setTimeout(function () {
+                        content = "我的来源：个人微店<br/>  电话：15900912480";
+                        _protoObj_.sendMsg(content);
+                    }, 300);
+                },
+                error: function (msg) {
+                    console.log(msg);
+                }
+            });
+        }
+    }
+    return this;
+}
+/**
+ *
+ * @param paramsObj
+ * @returns {SessionPage}
+ */
+SessionPage.prototype.sendGreetMsg = function (paramsObj) {
+    var template = "";
+    if (!this.iSwitch) {
+        //发送一条问候语
+        paramsObj['flow'] = "in";
+        paramsObj['type'] = "text";
+        paramsObj['text'] = "Hello World!";
+        paramsObj['idClient'] = new Date().getTime();
+        template = this.getTemplate(this.getParamsObj(paramsObj));
+        $(".session_content").append(template);
+        this.iSwitch = true;
     }
     return this;
 }

@@ -2010,23 +2010,24 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     margin-top: 0.15rem;
 }
 
-.shop_page .person .person-name > i {
+i.status {
     color: #92d0ff;
     font-size: 0.12rem;
-    margin-left: 0.04rem;
+    line-height: normal;
     letter-spacing: 0.01rem;
+    margin-left: 0.04rem;
 }
 
-.shop_page .person .person-name i > span:before {
+i.status > span:before {
     content: "离线";
     vertical-align: middle;
 }
 
-.shop_page .person .person-name i.on {
+i.status.on {
     color: #71e15b;
 }
 
-.shop_page .person .person-name i.on > span:before {
+i.status.on > span:before {
     content: "在线";
 }
 
