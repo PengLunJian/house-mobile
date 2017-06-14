@@ -940,6 +940,8 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 
 .list_page .item_img img {
     height: 0.9rem;
+    -webkit-border-radius: 0.04rem;
+    -moz-border-radius: 0.04rem;
     border-radius: 0.04rem;
 }
 
@@ -1029,7 +1031,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     box-shadow: 1px 1px 15px rgba(95, 147, 232, 0.6);
 }
 
-.list_page .side_fixed .side_fixed_btn:after {
+.list_page .side_fixed .side_fixed_btn.in:after {
     content: '';
     display: block;
     width: 0.06rem;
@@ -1381,8 +1383,42 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 }
 
 .modal.modal_chat .modal_content .item_img img {
-    height: 0.5rem;
+    width: 100%;
+    height: 100%;
     display: block;
+    -webkit-border-radius: 0.06rem;
+    -moz-border-radius: 0.06rem;
+    border-radius: 0.06rem;
+}
+
+.modal.modal_chat .modal_content .item_img .item_photo {
+    width: 100%;
+    height: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    -webkit-border-radius: 0.06rem;
+    -moz-border-radius: 0.06rem;
+    border-radius: 0.06rem;
+    -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
+}
+
+.modal.modal_chat .modal_content .item_img .item_photo.in:before {
+    position: absolute;
+    bottom: -0.02rem;
+    right: -0.1rem;
+    z-index: 1;
+    content: '';
+    display: block;
+    width: 0.3rem;
+    height: 0.12rem;
+    background-color: #71e15b;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
 .modal.modal_chat .modal_content .item_info {
@@ -1391,10 +1427,6 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     text-align: justify;
     border-bottom: 1px solid #dedede;
     padding: 0.15rem 0.15rem 0.15rem 0rem;
-}
-
-.modal.modal_chat .modal_content .chat_item:last-child .item_info {
-    border: none;
 }
 
 .modal.modal_chat .modal_content .item_info .item_lv1 {
@@ -1906,7 +1938,9 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     font-size: 0.2rem;
 }
 
-.detail_page .fixed-bar .rt-col .col-md-6 {
+.detail_page .fixed-bar .rt-col a {
+    color: #4e92ef;
+    line-height: 0.6rem;
     border-left: 1px solid #e1e1e1;
 }
 
@@ -2165,11 +2199,17 @@ i.status.on > span:before {
     line-height: 0.2rem;
 }
 
-.shop_page .modal .modal_bg {
+.modal.modal_login .modal_bg,
+.modal.modal_phone .modal_bg,
+.modal.modal_code .modal_bg,
+.modal.modal_success .modal_bg {
     z-index: 1010;
 }
 
-.shop_page .modal .modal_header {
+.modal.modal_login .modal_header,
+.modal.modal_phone .modal_header,
+.modal.modal_code .modal_header,
+.modal.modal_success .modal_header {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -2178,7 +2218,10 @@ i.status.on > span:before {
     line-height: 0.35rem;
 }
 
-.shop_page .modal .modal_header .btn {
+.modal.modal_login .modal_header .btn,
+.modal.modal_phone .modal_header .btn,
+.modal.modal_code .modal_header .btn,
+.modal.modal_success .modal_header .btn {
     float: left;
     width: 0.3rem;
     height: 100%;
@@ -2186,11 +2229,17 @@ i.status.on > span:before {
     line-height: 0.35rem;
 }
 
-.shop_page .modal .modal_header .btn.close {
+.modal.modal_login .modal_header .btn.close,
+.modal.modal_phone .modal_header .btn.close,
+.modal.modal_code .modal_header .btn.close,
+.modal.modal_success .modal_header .btn.close {
     float: right;
 }
 
-.shop_page .modal .modal_content {
+.modal.modal_login .modal_content,
+.modal.modal_phone .modal_content,
+.modal.modal_code .modal_content,
+.modal.modal_success .modal_content {
     top: 50%;
     left: 50%;
     color: #838383;
@@ -2210,7 +2259,10 @@ i.status.on > span:before {
     transition: all 300ms ease;
 }
 
-.shop_page .modal .modal_footer .btn {
+.modal.modal_login .modal_footer .btn,
+.modal.modal_phone .modal_footer .btn,
+.modal.modal_code .modal_footer .btn,
+.modal.modal_success .modal_footer .btn {
     width: auto;
     height: 0.4rem;
     color: #1e81ee;
@@ -2220,7 +2272,7 @@ i.status.on > span:before {
     background-color: transparent;
 }
 
-.shop_page .modal.modal_login .modal_content {
+.modal.modal_login .modal_content {
     width: 2.75rem;
     height: 2.33rem;
     margin-left: -1.375rem;
@@ -2229,7 +2281,10 @@ i.status.on > span:before {
     padding-bottom: 0.4rem;
 }
 
-.shop_page .modal.hide .modal_content {
+.modal.modal_login.hide .modal_content,
+.modal.modal_phone.hide .modal_content,
+.modal.modal_code.hide .modal_content,
+.modal.modal_success.hide .modal_content {
     opacity: 0;
     visibility: hidden;
     -webkit-transform: scale(1.4);
@@ -2239,22 +2294,25 @@ i.status.on > span:before {
     transform: scale(1.4);
 }
 
-.shop_page .modal .modal_info {
+.modal.modal_login .modal_info,
+.modal.modal_phone .modal_info,
+.modal.modal_code .modal_info,
+.modal.modal_success .modal_info {
     line-height: 0.25rem;
     margin-top: 0.1rem;
     padding: 0rem 0.35rem;
 }
 
-.shop_page .modal.modal_code .modal_info {
+.modal.modal_code .modal_info {
     margin-top: 0rem;
 }
 
-.shop_page .modal.modal_login img {
+.modal.modal_login img {
     width: 0.43rem;
     height: 0.73rem;
 }
 
-.shop_page .modal.modal_login .modal_footer .btn {
+.modal.modal_login .modal_footer .btn {
     float: left;
     width: 50%;
     color: #4d4d4d;
@@ -2262,12 +2320,12 @@ i.status.on > span:before {
     background-color: #ffffff;
 }
 
-.shop_page .modal.modal_login .modal_footer .btn.confirm {
+.modal.modal_login .modal_footer .btn.confirm {
     color: #1e81ee;
     border-left: 1px solid #dedede;
 }
 
-.shop_page .modal.modal_phone .modal_content {
+.modal.modal_phone .modal_content {
     width: 2.68rem;
     height: 1.88rem;
     margin-top: -0.94rem;
@@ -2276,14 +2334,17 @@ i.status.on > span:before {
     padding-bottom: 0.4rem;
 }
 
-.shop_page .modal .modal_title {
+.modal.modal_login .modal_title,
+.modal.modal_phone .modal_title,
+.modal.modal_code .modal_title,
+.modal.modal_success .modal_title {
     color: #3e3e3e;
     font-size: 0.18rem;
     font-weight: normal;
     line-height: 0.34rem;
 }
 
-.shop_page .modal.modal_phone .phone {
+.modal.modal_phone .phone {
     display: block;
     width: 2.03rem;
     height: 0.3rem;
@@ -2298,18 +2359,21 @@ i.status.on > span:before {
     border-bottom: 1px solid #646464;
 }
 
-.shop_page .modal .modal_body .modal_msg {
+.modal.modal_login .modal_body .modal_msg,
+.modal.modal_phone .modal_body .modal_msg,
+.modal.modal_code .modal_body .modal_msg,
+.modal.modal_success .modal_body .modal_msg {
     height: 0.2rem;
     color: #FF0000;
     font-size: 0.1rem;
     line-height: 0.2rem;
 }
 
-.shop_page .modal.modal_phone .btn.next {
+.modal.modal_phone .btn.next {
     color: #1e81ee;
 }
 
-.shop_page .modal.modal_code .modal_content {
+.modal.modal_code .modal_content {
     width: 2.68rem;
     height: 2.48rem;
     margin-top: -1.24rem;
@@ -2317,12 +2381,12 @@ i.status.on > span:before {
     padding-top: 0.35rem;
 }
 
-.shop_page .modal.modal_code .modal_info {
+.modal.modal_code .modal_info {
     font-size: 0.13rem;
     margin-bottom: 0.11rem;
 }
 
-.shop_page .modal.modal_code .btn.send {
+.modal.modal_code .btn.send {
     width: 0.85rem;
     height: 0.3rem;
     color: #ffffff;
@@ -2336,11 +2400,11 @@ i.status.on > span:before {
     border-radius: 0.04rem;
 }
 
-.shop_page .modal.modal_code .modal_item {
+.modal.modal_code .modal_item {
     padding: 0.05rem;
 }
 
-.shop_page .modal.modal_code .code {
+.modal.modal_code .code {
     display: block;
     width: 100%;
     height: 0.495rem;
@@ -2358,11 +2422,11 @@ i.status.on > span:before {
     transition: all 300ms ease;
 }
 
-.shop_page .modal.modal_code .modal_item.checked .code {
+.modal.modal_code .modal_item.checked .code {
     border-color: #1eb8df;
 }
 
-.shop_page .modal.modal_success .modal_content {
+.modal.modal_success .modal_content {
     width: 2.68rem;
     height: 2.28rem;
     margin-top: -1.14rem;
@@ -2370,91 +2434,11 @@ i.status.on > span:before {
     padding-bottom: 0.4rem;
 }
 
-.shop_page .modal.modal_success .modal_content img {
+.modal.modal_success .modal_content img {
     display: block;
     width: 0.75rem;
     height: 0.75rem;
     margin: 0.52rem auto 0.05rem;
-}
-
-.modal.modal_keyboard .modal_header {
-    height: 0.45rem;
-    line-height: 0.45rem;
-    background-color: #e9e9e9;
-}
-
-.modal.modal_keyboard .modal_header button {
-    height: 100%;
-    border: none;
-    display: block;
-    position: absolute;
-    color: #4d4d4d;
-    font-size: 0.14rem;
-    line-height: 0.45rem;
-    padding: 0rem 0.15rem;
-    background-color: transparent;
-}
-
-.modal.modal_keyboard .modal_header button.btn-confirm {
-    left: auto;
-    right: 0px;
-    color: #1e81ee;
-}
-
-.modal.modal_keyboard .modal_content {
-    width: 100%;
-    height: 2.45rem;
-    top: auto;
-    left: 0px;
-    bottom: 0px;
-    padding-top: 0.45rem;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-    -webkit-transition: all 300ms ease;
-    -moz-transition: all 300ms ease;
-    -ms-transition: all 300ms ease;
-    -o-transition: all 300ms ease;
-    transition: all 300ms ease;
-}
-
-.modal.modal_keyboard.hide .modal_content {
-    opacity: 1;
-    visibility: hidden;
-    -webkit-transform: translateY(2.45rem);
-    -moz-transform: translateY(2.45rem);
-    -ms-transform: translateY(2.45rem);
-    -o-transform: translateY(2.45rem);
-    transform: translateY(2.45rem);
-}
-
-.modal.modal_keyboard .modal_body .btn-num-content {
-    color: #000000;
-    font-size: 0.24rem;
-    line-height: 0.5rem;
-}
-
-.modal.modal_keyboard .modal_body .btn-num-item {
-    height: 0.5rem;
-    border-right: 1px solid rgba(0, 0, 0, .3);
-    border-bottom: 1px solid rgba(0, 0, 0, .3);
-}
-
-.modal.modal_keyboard .modal_body .btn-num-item:active {
-    background-color: rgba(0, 0, 0, .3);
-}
-
-.modal.modal_keyboard .modal_body .btn-num-item:nth-of-type(3n) {
-    border-right: 1px solid transparent;
-}
-
-.modal.modal_keyboard .modal_body .btn-num-item:nth-of-type(n+10) {
-    border-bottom: 1px solid transparent;
-}
-
-.modal.modal_keyboard .modal_body .btn-num-item:nth-child(10),
-.modal.modal_keyboard .modal_body .btn-num-item:last-child {
-    background-color: #e9e9e9;
 }
 
 /*** 微店管理页面Css Style Code ***/

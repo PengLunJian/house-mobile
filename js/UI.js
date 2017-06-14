@@ -212,7 +212,7 @@ ModalBox.prototype.resetStatus = function () {
  * @returns {ModalBox} 返回当前对象实现连缀调用
  */
 ModalBox.prototype.show = function () {
-    $(".shop_body").addClass("blur");
+    $(".container").addClass("blur");
     if (!$("html").hasClass("hidden")) {
         $("html").addClass("hidden");
     }
@@ -226,7 +226,7 @@ ModalBox.prototype.show = function () {
  * @returns {ModalBox} 返回当前对象实现连缀调用
  */
 ModalBox.prototype.hide = function () {
-    $(".shop_body").removeClass("blur");
+    $(".container").removeClass("blur");
     if ($("html").hasClass("hidden")) {
         $("html").removeClass("hidden");
     }
@@ -268,7 +268,7 @@ ModalBox.prototype.prevModal = function () {
             for (var i = 0; i < _protoObj_.elements.length; i++) {
                 if (filterName == _protoObj_.elements[i] && (i - 1) >= 0) {
                     _protoObj_.hide();
-                    $(".shop_body").addClass("blur");
+                    $(".container").addClass("blur");
                     if (!$("html").hasClass("hidden")) {
                         $("html").addClass("hidden");
                     }
@@ -345,12 +345,12 @@ ModalBox.prototype.nextModal = function () {
         var filterName = "." + className.replace(regExp, "");
         for (var i = 0; i < _protoObj_.elements.length; i++) {
             if (filterName == _protoObj_.elements[i]) {
-                $(".shop_body").addClass("blur");
+                $(".container").addClass("blur");
                 if (!$("html").hasClass("hidden")) $("html").addClass("hidden");
                 switch (i) {
                     case 0:
                         _protoObj_.hide();
-                        $(".shop_body").addClass("blur");
+                        $(".container").addClass("blur");
                         if (!$("html").hasClass("hidden")) $("html").addClass("hidden");
                         $(_protoObj_.elements[i + 1]).removeClass("hide");
                         break;
@@ -358,7 +358,7 @@ ModalBox.prototype.nextModal = function () {
                         var phoneNumber = $("input[name='phone']").val().trim();
                         if (_protoObj_.phoneNotEmptyCheck(phoneNumber)) {
                             _protoObj_.hide();
-                            $(".shop_body").addClass("blur");
+                            $(".container").addClass("blur");
                             if (!$("html").hasClass("hidden")) $("html").addClass("hidden");
                             $(_protoObj_.elements[i + 1]).removeClass("hide");
                             _protoObj_.oTime = new TimeCountDown({
@@ -413,7 +413,7 @@ ModalBox.prototype.checkCode = function () {
             if (_protoObj_.code == afterCode) {
                 $(this).blur();
                 _protoObj_.hide();
-                $(".shop_body").addClass("blur");
+                $(".container").addClass("blur");
                 if (!$("html").hasClass("hidden")) $("html").addClass("hidden");
                 $(_protoObj_.elements[3]).removeClass("hide");
             } else {
