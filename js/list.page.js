@@ -139,6 +139,14 @@ $(function () {
     })();
 
     (function NIMSession() {
+        var ms = new Message({
+            method: "get_contact",
+            tel: localStorage.getItem("phone"),
+            data_id: localStorage.getItem("dataId"),
+            user_id: localStorage.getItem("userId"),
+            url: "http://gltest.2ma2.com/ashx/IMAjax.ashx",
+        });
+
         var data = {};
         var nim = NIM.getInstance({
             appKey: '54ca06c2b88aa7bf9616fde04c623383',
@@ -510,7 +518,8 @@ $(function () {
          */
         function onMsg(msg) {
             pushMsg(msg);
-            console.log(msg);
+            ms.updateStatus(msg);
+            ms.addMsg(msg);
         }
 
         /**
@@ -522,12 +531,5 @@ $(function () {
             pushMsg(msg);
         }
 
-        new Message({
-            url: "http://gltest.2ma2.com/ashx/IMAjax.ashx",
-            method: "get_contact",
-            tel: localStorage.getItem("phone"),
-            data_id: localStorage.getItem("dataId"),
-            user_id: localStorage.getItem("userId")
-        });
     })();
 });

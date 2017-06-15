@@ -1404,7 +1404,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
 }
 
-.modal.modal_chat .modal_content .item_img .item_photo.in:before {
+.modal.modal_chat .modal_content .chat_item.in .item_photo:before {
     position: absolute;
     bottom: -0.02rem;
     right: -0.1rem;
@@ -1426,11 +1426,11 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     height: 0.7rem;
     text-align: justify;
     border-bottom: 1px solid #dedede;
-    padding: 0.15rem 0.15rem 0.15rem 0rem;
+    padding: 0.1rem 0.15rem 0.1rem 0rem;
 }
 
 .modal.modal_chat .modal_content .item_info .item_lv1 {
-    line-height: 0.2rem;
+    line-height: 0.25rem;
 }
 
 .modal.modal_chat .modal_content .item_info .item_name {

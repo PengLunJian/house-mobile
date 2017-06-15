@@ -479,11 +479,11 @@ ModalBox.prototype.setLocalStorage = function (url) {
         }
     })
     localStorage.setItem("dataId", "353");
-    localStorage.setItem("toUser", "11_799");
-    localStorage.setItem("account", "11_675");
+    localStorage.setItem("toUser", "12_20707");
+    localStorage.setItem("account", "XP20");
     localStorage.setItem("phone", "15900912480");
     localStorage.setItem("fromUser", "15900912480");
-    localStorage.setItem("token", "ff24c71623bc99c3");
+    localStorage.setItem("token", "1");
     localStorage.setItem("outImg", "images/user_logo.jpg");
     localStorage.setItem("inImg", "images/chat_logo.jpg");
     localStorage.setItem("userId", "osZl4jjpN6OO58xgTZSUgxlUpRYb");
